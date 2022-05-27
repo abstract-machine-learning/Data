@@ -80,8 +80,8 @@ def noiseCat(dataset, columns, noise_attributes, epsilon, cat_attributes):
                 l = record[i + 1] - epsilon
                 u = record[i + 1] + epsilon
             elif c in cat_attributes or (len(column_data) == 2 and column_data[0] in cat_attributes):
-                l = -999999.9
-                u = +999999.9
+                l = 0
+                u = 1
             else:
                 l = record[i + 1]
                 u = record[i + 1]
@@ -116,6 +116,11 @@ def savePerturbation(perturbation, output):
     with open(output, 'w') as f:
         for row in perturbation:
             f.write(row + '\n')
+
+def saveTiers(tiers, output):
+    with open(output, 'w') as f:
+        for tier in tiers:
+            f.write(str(tier) + ' ')
 
 if __name__ == '__main__':
     if len(argv) < 5:

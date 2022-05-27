@@ -9,6 +9,10 @@ import json
 def execute():
 	columns = Perturbation.readColumns('./german/dataset/columns.csv')
 	dataset = pd.read_csv('./german/dataset/test-set.csv', header=None, skiprows=1)
+
+	print ("\t- Tiers [GERMAN]")
+	tiers = Perturbation.readTiers(columns)
+	Perturbation.saveTiers(tiers,'./german/perturbation/german-tier.dat')
 	
 	print("\t- Testing [GERMAN][CAT]")
 	perturbation = Perturbation.category(dataset, columns, ['sex_male'])

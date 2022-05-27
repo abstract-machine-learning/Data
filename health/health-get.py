@@ -99,7 +99,7 @@ def preprocess_members(df_members):
 data_file = base_dir + 'dataset-raw.csv'
 if not path.exists(data_file):
     zip_file = base_dir + 'dataset-raw.zip'
-    Dataset.getFromUrl('https://foreverdata.org/1015/content/HHP_release3.zip', zip_file)
+    #Dataset.getFromUrl('https://foreverdata.org/1015/content/HHP_release3.zip', zip_file)
     zf = zipfile.ZipFile(zip_file)
 
     claims = preprocess_claims(pd.read_csv(zf.open('Claims.csv'), sep=','))
