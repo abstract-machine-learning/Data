@@ -10,7 +10,7 @@ import compas.compas_adversarial_region
 import german.german_adversarial_region
 import health.health_adversarial_region
 
-data_folder = "crime"	
+data_folder = "health"	
 training_name = "dataset/training-set.csv"
 test_name = "dataset/test-set.csv"
 adversarial_name = "adversarial-region.dat"
@@ -27,7 +27,7 @@ def test_SVM(model):
 	print("Balanced Accuracy:",metrics.balanced_accuracy_score(y, y_pred))
 
 
-def create_model(kernel_name,reg_param = 1,gamma = 1,degree = 1, coef0 = 0):	
+def create_model(kernel_name,reg_param = 1,gamma = 1,degree = 1, coef0 = 0.01):	
 	
 	#s = subprocess.check_call(f"python3 {data_folder}-get.py", shell = True)
 
@@ -46,10 +46,10 @@ def create_model(kernel_name,reg_param = 1,gamma = 1,degree = 1, coef0 = 0):
 		
 		classifier_mapper1 = classifier_mapper.ClassifierMapper()
 		classifier_mapper1.create(model, output_path)
+		test_SVM(model)
 	else:
 		print(f"SVM Already present: {output_path}")
 
-	test_SVM(model)
 	return output_path
 
 
@@ -66,6 +66,7 @@ def run_saver(svm_addr,abstraction = "raf",perturbation = "cat"):
 	is_binary = "1"
 	
 	print(f"Start Analysis")
+	print(f"bin/saver {rel_svm_loc} {rel_dataset_loc} {abstraction} from_file {perturbation_file} {tier_file} {is_binary}")
 	s = subprocess.check_call(f"bin/saver {rel_svm_loc} {rel_dataset_loc} {abstraction} from_file {perturbation_file} {tier_file} {is_binary}", shell = True)
 	os.chdir(f"../Data/")
 	print(f"Finished Analysis")
@@ -78,30 +79,30 @@ def run_saver(svm_addr,abstraction = "raf",perturbation = "cat"):
 
 def loop_model(kernel_name):
 	#kernel_names = ['linear', 'poly', 'rbf']
-	reg_params = [1]
+	reg_params =[0.1]
 	gammas = [0.01,0.001,0.0001,0.00001]
-	degrees = [3,9]
+	degrees = [3,9,15,20]
 
 	for reg in reg_params:
 		#for kernel_name in kernel_names:
 		if kernel_name == 'linear':
 			svm_addr = create_model(kernel_name,reg)
-			loop_saver(svm_addr)
+			#loop_saver(svm_addr)
 		
 		if kernel_name == 'rbf':
 			for gamma in gammas:
 				if(kernel_name == 'rbf' and gamma == 1):
 					continue # already calculated
 				svm_addr = create_model(kernel_name,reg, gamma = gamma)
-				loop_saver(svm_addr)
+				#loop_saver(svm_addr)
 		
 		if kernel_name == 'poly':
 			for degree in degrees:
 				svm_addr = create_model(kernel_name,reg, degree = degree)
-				loop_saver(svm_addr)
+				#loop_saver(svm_addr)
 
 def loop_saver(svm_addr):
-	abstractions = ["interval"]#["interval", "raf","hybrid"]
+	abstractions = ["interval", "raf","hybrid"]
 	perturbations = ["cat", "noisecat","noise"]
 
 	for abstraction in abstractions:
@@ -125,33 +126,71 @@ def get_avg(rawPath):
 	print()
 	file1.close()
 
+#if __name__ == '__main__':
+#	os.system('rm ../saver/result1.txt')
+#	os.system('rm ../saver/result_raw.txt')
+#	os.system('touch ../saver/result1.txt')
+#	os.system('touch ../saver/result_raw.txt')
+#	os.chdir(f"./{data_folder}")
+#	s = subprocess.check_call(f"python3 {data_folder}-get.py", shell = True)
+#	os.chdir("..")
+#
+#	if(data_folder == "adult"):
+#		adult.adult_adversarial_region.execute()
+#	if(data_folder == "compas"):
+#		compas.compas_adversarial_region.execute()
+#	if(data_folder == "crime"):
+#		crime.crime_adversarial_region.execute()
+#	if(data_folder == "german"):
+#		german.german_adversarial_region.execute()
+#	if(data_folder == "health"):
+#		health.health_adversarial_region.execute()
+#	
+#	loop_model('linear')
+#	loop_model('rbf')
+#	loop_model('poly')
+#	
+#
+#	#loop_saver("./adult/model/./svm_rbf_g1_d1_c0_C1.dat")
+#	#svm_addr = create_model('rbf',1)
+#
+#	dest = shutil.move("../saver/result1.txt", f"./{data_folder}/{data_folder}-results.txt") #shutil.move(source, destination) 
+#	dest = shutil.move("../saver/result_raw.txt", f"./{data_folder}/{data_folder}-results_raw.txt")
+#
+#	get_avg(f"./{data_folder}/{data_folder}-results_raw.txt")
+#
+
+
 if __name__ == '__main__':
-	os.system('touch ../saver/result1.txt')
-	os.system('touch ../saver/result_raw.txt')
-	os.chdir(f"./{data_folder}")
-	s = subprocess.check_call(f"python3 {data_folder}-get.py", shell = True)
-	os.chdir("..")
-
-	if(data_folder == "adult"):
-		adult.adult_adversarial_region.execute()
-	if(data_folder == "compas"):
-		compas.compas_adversarial_region.execute()
-	if(data_folder == "crime"):
-		crime.crime_adversarial_region.execute()
-	if(data_folder == "german"):
-		german.german_adversarial_region.execute()
-	if(data_folder == "health"):
-		health.health_adversarial_region.execute()
-	
 	loop_model('linear')
-	loop_model('rbf')
-	loop_model('poly')
-	
+	#loop_model('rbf')
+	#loop_model('poly')
 
-	#loop_saver("./adult/model/./svm_rbf_g1_d1_c0_C1.dat")
-	#svm_addr = create_model('rbf',1)
 
-	dest = shutil.move("../saver/result1.txt", f"./{data_folder}/{data_folder}-results.txt") #shutil.move(source, destination) 
-	dest = shutil.move("../saver/result_raw.txt", f"./{data_folder}/{data_folder}-results_raw.txt")
 
-	get_avg(f"./{data_folder}/{data_folder}-results_raw.txt")
+#-----German------
+#reg_params = [15]
+#gammas = [0.01,0.001,0.0001,0.00001]
+#degrees = [3,9,15,20]
+#coef0 = 40
+#-----------------
+
+#-----Crime------
+#reg_params = [3]
+#gammas = [0.01,0.001,0.0001,0.00001]
+#degrees = [3,9,15,20]
+#coef0 = 40
+#-----------------
+
+#-----Crime------
+#reg_params = [1]
+#gammas = [0.01,0.001,0.0001,0.00001]
+#degrees = [3,9,15,20]
+#coef0 = 0
+#-----Crime------
+
+
+#-----Health------
+#reg_params = [0.1]
+
+#-----Crime------

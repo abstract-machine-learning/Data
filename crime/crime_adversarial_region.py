@@ -15,7 +15,7 @@ def execute():
 	columns = Perturbation.readColumns('./crime/dataset/columns.csv')
 	dataset = pd.read_csv('./crime/dataset/test-set.csv', header=None, skiprows=1)
 
-	print ("\t- Tiers [GERMAN]")
+	print ("\t- Tiers [CRIME]")
 	tiers = Perturbation.readTiers(columns)
 	Perturbation.saveTiers(tiers,'./crime/perturbation/crime-tier.dat')
 	

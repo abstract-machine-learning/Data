@@ -30,6 +30,25 @@ def readTiers(columns):
                 next_index = next_index + 1
     return tier
 
+def readTiers_Health(columns):
+    tier = []
+    lookup = {}
+    next_index = 1
+    for c in columns:
+        data = c.split('=', 2)
+        if len(data) == 1 or data[0] in ["PrimaryConditionGroup","Specialty","ProcedureGroup","PlaceSvc"]:
+            tier.append(next_index)
+            next_index = next_index + 1
+        else:
+            prefix, value = data
+            if prefix in lookup:
+                tier.append(lookup[prefix])
+            else:
+                lookup[prefix] = next_index
+                tier.append(next_index)
+                next_index = next_index + 1
+    return tier
+
 def category(dataset, columns, attributes):
     rows = []
     for index, record in dataset.iterrows():

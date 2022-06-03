@@ -17,7 +17,8 @@ class SVM:
             decision_function_shape = self.decision_function_shape,
             gamma = self.gamma,
             degree = self.degree,
-            coef0 = self.c
+            coef0 = self.c,
+            max_iter = 30000
         )
         clf.fit(x, y)
         return clf

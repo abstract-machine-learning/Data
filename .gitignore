@@ -1,0 +1,62 @@
+*.txt
+*.dat
+
+# exclude everything
+adult/dataset/*
+adult/perturbation/*
+adult/svm/*
+
+# exception to the rule
+!adult/dataset/.gitkeep
+!adult/perturbation/.gitkeep 
+!adult/svm/.gitkeep 
+
+
+
+
+# exclude everything
+compas/dataset/*
+compas/perturbation/*
+compas/svm/*
+
+# exception to the rule
+!compas/dataset/.gitkeep
+!compas/perturbation/.gitkeep 
+!compas/svm/.gitkeep 
+
+
+
+
+# exclude everything
+crime/dataset/*
+crime/perturbation/*
+crime/svm/*
+
+# exception to the rule
+!crime/dataset/.gitkeep
+!crime/perturbation/.gitkeep 
+!crime/svm/.gitkeep 
+
+
+
+# exclude everything
+german/dataset/*
+german/perturbation/*
+german/svm/*
+
+# exception to the rule
+!german/dataset/.gitkeep
+!german/perturbation/.gitkeep 
+!german/svm/.gitkeep
+
+
+
+# exclude everything
+health/dataset/*
+health/perturbation/*
+health/svm/*
+
+# exception to the rule
+!health/dataset/.gitkeep
+!health/perturbation/.gitkeep 
+!health/svm/.gitkeep 
