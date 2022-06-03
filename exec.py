@@ -34,8 +34,8 @@ def create_model(kernel_name,reg_param = 1,gamma = 1,degree = 1, coef0 = 0.01):
 	dataset_path = f"./{data_folder}/{training_name}"
 	output_path = f"./{data_folder}/svm/{data_folder}-svm_{kernel_name}_g{gamma}_d{degree}_c{coef0}_C{reg_param}.dat"
 
-	#if(os.path.isfile(output_path)==False):
-	if(True):
+	if(os.path.isfile(output_path)==False):
+	#if(True):
 		print(f"Creating SVM: {output_path}")
 		# Trains model
 		dataset_mapper1 = dataset_mapper.DatasetMapper()
@@ -87,19 +87,19 @@ def loop_model(kernel_name):
 		#for kernel_name in kernel_names:
 		if kernel_name == 'linear':
 			svm_addr = create_model(kernel_name,reg)
-			#loop_saver(svm_addr)
+			loop_saver(svm_addr)
 		
 		if kernel_name == 'rbf':
 			for gamma in gammas:
 				if(kernel_name == 'rbf' and gamma == 1):
 					continue # already calculated
 				svm_addr = create_model(kernel_name,reg, gamma = gamma)
-				#loop_saver(svm_addr)
+				loop_saver(svm_addr)
 		
 		if kernel_name == 'poly':
 			for degree in degrees:
 				svm_addr = create_model(kernel_name,reg, degree = degree)
-				#loop_saver(svm_addr)
+				loop_saver(svm_addr)
 
 def loop_saver(svm_addr):
 	abstractions = ["interval", "raf","hybrid"]
@@ -126,45 +126,45 @@ def get_avg(rawPath):
 	print()
 	file1.close()
 
-#if __name__ == '__main__':
-#	os.system('rm ../saver/result1.txt')
-#	os.system('rm ../saver/result_raw.txt')
-#	os.system('touch ../saver/result1.txt')
-#	os.system('touch ../saver/result_raw.txt')
-#	os.chdir(f"./{data_folder}")
-#	s = subprocess.check_call(f"python3 {data_folder}-get.py", shell = True)
-#	os.chdir("..")
-#
-#	if(data_folder == "adult"):
-#		adult.adult_adversarial_region.execute()
-#	if(data_folder == "compas"):
-#		compas.compas_adversarial_region.execute()
-#	if(data_folder == "crime"):
-#		crime.crime_adversarial_region.execute()
-#	if(data_folder == "german"):
-#		german.german_adversarial_region.execute()
-#	if(data_folder == "health"):
-#		health.health_adversarial_region.execute()
-#	
-#	loop_model('linear')
-#	loop_model('rbf')
-#	loop_model('poly')
-#	
-#
-#	#loop_saver("./adult/model/./svm_rbf_g1_d1_c0_C1.dat")
-#	#svm_addr = create_model('rbf',1)
-#
-#	dest = shutil.move("../saver/result1.txt", f"./{data_folder}/{data_folder}-results.txt") #shutil.move(source, destination) 
-#	dest = shutil.move("../saver/result_raw.txt", f"./{data_folder}/{data_folder}-results_raw.txt")
-#
-#	get_avg(f"./{data_folder}/{data_folder}-results_raw.txt")
-#
-
-
 if __name__ == '__main__':
+	os.system('rm ../saver/result1.txt')
+	os.system('rm ../saver/result_raw.txt')
+	os.system('touch ../saver/result1.txt')
+	os.system('touch ../saver/result_raw.txt')
+	os.chdir(f"./{data_folder}")
+	s = subprocess.check_call(f"python3 {data_folder}-get.py", shell = True)
+	os.chdir("..")
+
+	if(data_folder == "adult"):
+		adult.adult_adversarial_region.execute()
+	if(data_folder == "compas"):
+		compas.compas_adversarial_region.execute()
+	if(data_folder == "crime"):
+		crime.crime_adversarial_region.execute()
+	if(data_folder == "german"):
+		german.german_adversarial_region.execute()
+	if(data_folder == "health"):
+		health.health_adversarial_region.execute()
+	
 	loop_model('linear')
-	#loop_model('rbf')
-	#loop_model('poly')
+	loop_model('rbf')
+	loop_model('poly')
+	
+
+	#loop_saver("./adult/model/./svm_rbf_g1_d1_c0_C1.dat")
+	#svm_addr = create_model('rbf',1)
+
+	dest = shutil.move("../saver/result1.txt", f"./{data_folder}/{data_folder}-results.txt") #shutil.move(source, destination) 
+	dest = shutil.move("../saver/result_raw.txt", f"./{data_folder}/{data_folder}-results_raw.txt")
+
+	get_avg(f"./{data_folder}/{data_folder}-results_raw.txt")
+
+
+
+#if __name__ == '__main__':
+#	loop_model('linear')
+#	#loop_model('rbf')
+#	#loop_model('poly')
 
 
 
