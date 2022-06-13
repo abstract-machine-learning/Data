@@ -13,6 +13,10 @@ def execute():
 	print ("\t- Tiers [GERMAN]")
 	tiers = Perturbation.readTiers(columns)
 	Perturbation.saveTiers(tiers,'./german/perturbation/german-tier.dat')
+
+	print("\t- Testing [GERMAN][Top]")
+	perturbation = Perturbation.top(columns)
+	Perturbation.savePerturbation(perturbation, './german/perturbation/german-top-adversarial-region.dat')
 	
 	print("\t- Testing [GERMAN][CAT]")
 	perturbation = Perturbation.category(dataset, columns, ['sex_male'])

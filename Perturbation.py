@@ -108,6 +108,16 @@ def noiseCat(dataset, columns, noise_attributes, epsilon, cat_attributes):
         rows.append(' '.join(row))
     return rows
 
+def top(columns):
+    rows = []
+    row = []
+    for i in range(0, len(columns)):
+        l = 0
+        u = 1
+        row.append('[{};{}]'.format(l, u))
+    rows.append(' '.join(row))
+    return rows
+
 def conditionalAttribute(dataset, columns, condition_attribute, threshold, attributes, epsilon_1, epsilon_2):
     rows = []
     for index, record in dataset.iterrows():

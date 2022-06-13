@@ -18,6 +18,10 @@ def execute():
 	print ("\t- Tiers [COMPAS]")
 	tiers = Perturbation.readTiers(columns)
 	Perturbation.saveTiers(tiers,'./compas/perturbation/compas-tier.dat')
+
+	print("\t- Testing [COMPAS][Top]")
+	perturbation = Perturbation.top(columns)
+	Perturbation.savePerturbation(perturbation, './compas/perturbation/compas-top-adversarial-region.dat')
 	
 	print("\t- Testing [COMPAS][CAT]")
 	perturbation = Perturbation.category(dataset, columns, ['race_caucasian'])

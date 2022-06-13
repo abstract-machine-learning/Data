@@ -18,6 +18,11 @@ def execute():
 	print ("\t- Tiers [CRIME]")
 	tiers = Perturbation.readTiers(columns)
 	Perturbation.saveTiers(tiers,'./crime/perturbation/crime-tier.dat')
+
+	print("\t- Testing [CRIME][Top]")
+	perturbation = Perturbation.top(columns)
+	Perturbation.savePerturbation(perturbation, './crime/perturbation/crime-top-adversarial-region.dat')
+	
 	
 	print("\t- Testing [CRIME][CAT]")
 	perturbation = Perturbation.category(dataset, columns, ['state'])

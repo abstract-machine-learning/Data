@@ -18,6 +18,10 @@ def execute():
 	print ("\t- Tiers [HEALTH]")
 	tiers = Perturbation.readTiers_Health(columns)
 	Perturbation.saveTiers(tiers,'./health/perturbation/health-tier.dat')
+
+	print("\t- Testing [HEALTH][Top]")
+	perturbation = Perturbation.top(columns)
+	Perturbation.savePerturbation(perturbation, './health/perturbation/health-top-adversarial-region.dat')
 	
 	print("\t- Testing [HEALTH][CAT]")
 	perturbation = Perturbation.category(dataset, columns, ['AgeAtFirstClaim', 'Sex'])
