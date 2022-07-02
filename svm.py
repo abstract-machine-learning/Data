@@ -18,7 +18,7 @@ class SVM:
             gamma = self.gamma,
             degree = self.degree,
             coef0 = self.c,
-            max_iter = 30000
+            max_iter = 70000
         )
         clf.fit(x, y)
         return clf

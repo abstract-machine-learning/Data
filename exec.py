@@ -5,26 +5,28 @@ import shutil
 import dataset_mapper
 import classifier_mapper
 import svm
+import statistics
+from collections import defaultdict
 import crime.crime_adversarial_region
 import adult.adult_adversarial_region
 import compas.compas_adversarial_region
 import german.german_adversarial_region
 import health.health_adversarial_region
 
-data_folder = "german"	
+data_folder = "health"	
 training_name = "dataset/training-set.csv"
 test_name = "dataset/test-set.csv"
 adversarial_name = "adversarial-region.dat"
 
 svm_loc = "./domains/{data_folder}/model/"
 
-reg_params = [1,10,0.01]#[1,10,0.01]
-gammas = [0.01,0.03,0.05,0.07,0.09]
-degrees = [6]#list(range(0,16,3))[1:]
-coef0s =  list(range(0,16,3))[1:]
-abstractions = ['raf']#["interval", "raf","hybrid"]#["interval", "raf","hybrid"]
+reg_params = [1,0.05,0.1]
+gammas = [0.01]
+degrees = [6]
+coef0s = [0.01]
+abstractions = ['interval','raf']
 perturbations = ["top","cat", "noisecat","noise"]
-kernel_types = ['linear','rbf','poly']
+kernel_types = ['poly']#['linear','rbf','poly']
 exceptions = []
 
 def test_SVM(model):
@@ -191,24 +193,59 @@ def get_avg_complete(rawPath):
 	print()
 	file1.close()
 
+def score_to_grade(score):
+	stdev = statistics.stdev(score.values())
+	mean = statistics.mean(score.values())
+	grade = dict()
+	for k,v in score.items():
+		if(v == 0):
+			continue
+
+		if(v > mean + 3*stdev):
+			grade[k] = 10
+		elif(v > mean + 2*stdev):
+			grade[k] = 9
+		elif(v > mean + stdev):
+			grade[k] = 8
+		elif(v > mean - stdev):
+			grade[k] = 7
+		elif(v > mean - 2*stdev):
+			grade[k] = 6
+		elif(v > mean - 3*stdev):
+			grade[k] = 5
+		else:
+			grade[k] = 4
+	grade = dict(sorted(grade.items(), key = lambda kv:abs(float(kv[1]))))
+	score = dict(sorted(score.items(), key = lambda kv:abs(float(kv[1]))))
+	print(f"G->{grade}\n\nS->{score}")
+	return grade
+
+
 def get_feature_score(dataDirPath):
 	fileR = open(f"{dataDirPath}/{data_folder}-feature_score_raw.txt","r+")
 	fileW = open(f"{dataDirPath}/{data_folder}-feature_analysis.txt","w+")
 	with open(dataDirPath+"/dataset/columns.csv", 'r') as f:
 		columns = [line for line in csv.reader(f)][0]
-	
+	CG_L,CG_R,CG_P,CG = defaultdict(float),defaultdict(float),defaultdict(float),defaultdict(float)
+	#for col in columns[1:]:
+	#	CG_L[col],CG_R[col],CG_P[col] = 0.0,0.0,0.0
+	count = [0,0,0]
 	rawdata = fileR.readlines()
 	pos = 0
 	for kernal in kernel_types:
-		#for reg_param in reg_params:
+		feature_score = dict()
 		if 'linear' == kernal:
 				fileW.write(f"\n\n\n\nSVM Type: Linear; Reg. Param: {reg_params[0]}\n")
 				weights = rawdata[pos].split()
-				feature_score = dict()
 				pos += 1
 				for col_i in range(1,len(columns)):
-					feature_score[columns[col_i]] = weights[col_i]
-				fileW.write(f"{dict(sorted(feature_score.items(), key = lambda kv:abs(float(kv[1]))))} \n")
+					feature_score[columns[col_i]] = abs(float(weights[col_i]))
+				feature_grade = score_to_grade(feature_score)
+				fileW.write(f"{feature_grade} \n")
+				for k,v in feature_grade.items():
+					CG_L[k] += v
+				count[0] += 1
+
 		if 'poly' == kernal:
 			for degree in degrees:
 				for coef0 in coef0s:
@@ -216,16 +253,37 @@ def get_feature_score(dataDirPath):
 					weights = rawdata[pos].split()
 					pos += 1
 					for col_i in range(1,len(columns)):
-						feature_score[columns[col_i]] = weights[col_i]
-					fileW.write(f"{dict(sorted(feature_score.items(), key = lambda kv:abs(float(kv[1]))))} \n")
+						feature_score[columns[col_i]] = abs(float(weights[col_i]))
+					feature_grade = score_to_grade(feature_score)
+					fileW.write(f"{feature_grade} \n")
+					for k,v in feature_grade.items():
+						CG_P[k] += v
+					count[1] += 1
 		if 'rbf' == kernal:
 			for gamma in gammas:
 				fileW.write(f"\n\n\n\nSVM Type: RBF; Reg. Param: {reg_params[1]}; gamma:{gamma}\n")
 				weights = rawdata[pos].split()
 				pos += 1
 				for col_i in range(1,len(columns)):
-					feature_score[columns[col_i]] = weights[col_i]
-				fileW.write(f"{dict(sorted(feature_score.items(), key = lambda kv:abs(float(kv[1]))))} \n")
+					feature_score[columns[col_i]] = abs(float(weights[col_i]))
+				feature_grade = score_to_grade(feature_score)
+				fileW.write(f"{feature_grade} \n")
+				for k,v in feature_grade.items():
+					CG_R[k] += v
+				count[2] += 1
+	for col in CG_L.keys():
+		CG_L[col] = CG_L[col]/count[0]
+		CG_R[col] = CG_R[col]/count[1]
+		CG_P[col] = CG_P[col]/count[2]
+		CG[col] = (CG_L[col] + CG_R[col] + CG_P[col])/3
+	fileW.write(f"\n\n\n----CUMMULATIVE RESULT (Linear)---\n")
+	fileW.write(f"{ dict(sorted(CG_L.items(), key = lambda kv:abs(float(kv[1]))))} \n")
+	fileW.write(f"\n\n\n----CUMMULATIVE RESULT (RBF)---\n")
+	fileW.write(f"{ dict(sorted(CG_R.items(), key = lambda kv:abs(float(kv[1]))))} \n")
+	fileW.write(f"\n\n\n----CUMMULATIVE RESULT (Poly)---\n")
+	fileW.write(f"{ dict(sorted(CG_P.items(), key = lambda kv:abs(float(kv[1]))))} \n")
+	fileW.write(f"\n\n\n----CUMMULATIVE RESULT---\n")
+	fileW.write(f"{ dict(sorted(CG.items(), key = lambda kv:abs(float(kv[1]))))} \n")
 
 if __name__ == '__main__':
 	os.system('rm ../saver/result1.txt')
@@ -252,9 +310,9 @@ if __name__ == '__main__':
 	for kernal in kernel_types:
 		loop_model(kernal)
 
-	dest = shutil.move("../saver/result1.txt", f"./{data_folder}/{data_folder}-results.txt") #shutil.move(source, destination) 
-	dest = shutil.move("../saver/result_raw.txt", f"./{data_folder}/{data_folder}-results_raw.txt")
-	dest = shutil.move("../saver/feature_score_raw.txt", f"./{data_folder}/{data_folder}-feature_score_raw.txt")
+	#dest = shutil.move("../saver/result1.txt", f"./{data_folder}/{data_folder}-results.txt") #shutil.move(source, destination) 
+	#dest = shutil.move("../saver/result_raw.txt", f"./{data_folder}/{data_folder}-results_raw.txt")
+	#dest = shutil.move("../saver/feature_score_raw.txt", f"./{data_folder}/{data_folder}-feature_score_raw.txt")
 
 	if('top' in perturbations):
 		get_feature_score(f"./{data_folder}")
@@ -274,10 +332,11 @@ if __name__ == '__main__':
 #	get_avg(f"./{data_folder}/{data_folder}-results_raw.txt")
 
 #-----Crime------
-#reg_params = [1]
+#reg_params = [1,1,1]
 #gammas = [0.01,0.001,0.0001,0.00001]
 #degrees = [3,9,15,20]
-#coef0 = 0
+#coef0s = [0]
+#abstractions = ['hybrid']
 
 
 #-----Health------
