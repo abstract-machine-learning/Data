@@ -16,7 +16,7 @@ def execute():
 	dataset = pd.read_csv('./compas/dataset/test-set.csv', header=None, skiprows=1)
 
 	print ("\t- Tiers [COMPAS]")
-	tiers = Perturbation.readTiers(columns)
+	tiers = Perturbation.readTiers(columns, ['race_caucasian'])
 	Perturbation.saveTiers(tiers,'./compas/perturbation/compas-tier.dat')
 
 	print("\t- Testing [COMPAS][Top]")

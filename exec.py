@@ -13,20 +13,20 @@ import compas.compas_adversarial_region
 import german.german_adversarial_region
 import health.health_adversarial_region
 
-data_folder = "health"	
+data_folder = "adult"	
 training_name = "dataset/training-set.csv"
 test_name = "dataset/test-set.csv"
 adversarial_name = "adversarial-region.dat"
 
 svm_loc = "./domains/{data_folder}/model/"
 
-reg_params = [1,0.05,0.1]
+reg_params = [1,0.05,0.01] #for linear raf and poly respectively
 gammas = [0.01]
-degrees = [6]
-coef0s = [0.01]
-abstractions = ['interval','raf']
-perturbations = ["top","cat", "noisecat","noise"]
-kernel_types = ['poly']#['linear','rbf','poly']
+degrees = [3]
+coef0s =  [3]
+abstractions = ['raf']#['interval','raf']
+perturbations = ["cat", "noisecat","noise"]#["top","cat", "noisecat","noise"]
+kernel_types = ['rbf','poly']
 exceptions = []
 
 def test_SVM(model):
@@ -83,10 +83,8 @@ def run_saver(svm_addr,abstraction = "raf",perturbation = "cat"):
 	os.chdir(f"../Data/")
 	print(f"Finished Analysis")
 
-
 #def loop_model(kernel_name):
 #	for reg in reg_params:
-#		#for kernel_name in kernel_names:
 #		if kernel_name == 'linear':
 #			svm_addr = create_model(kernel_name,reg)
 #			loop_saver(svm_addr)
@@ -105,6 +103,7 @@ def run_saver(svm_addr,abstraction = "raf",perturbation = "cat"):
 #					except:
 #						print(f"\t-----Exception Occured for (degree= {degree},coeff = {coef0})--------")
 #						exceptions.append((degree,coef0))
+
 
 def loop_model(kernel_name):
 	#for reg in reg_params:
@@ -134,11 +133,11 @@ def loop_saver(svm_addr):
 			run_saver(svm_addr,abstraction,perturbation)
 
 def get_avg(rawPath):
-	kernal = "poly"
+	kernel = kernel_types[0]
 	file1 = open(rawPath,"r+") 
 	lines = file1.readlines()
 	lineNo = 0
-	if kernal == "poly":
+	if kernel == "poly":
 		for reg in reg_params:
 			for degree in degrees:
 				for coef0 in coef0s:
@@ -157,7 +156,7 @@ def get_avg(rawPath):
 					for i in range(3):
 						average[i] /= c
 					print(f"{reg}	{degree}	{coef0}	  {average[0]}	{average[1]}  {average[2]}")
-	if kernal == "rbf":
+	if kernel == "rbf":
 		for reg in reg_params:
 			for gamma in gammas:
 				average = [0,0,0]
@@ -207,14 +206,16 @@ def score_to_grade(score):
 			grade[k] = 9
 		elif(v > mean + stdev):
 			grade[k] = 8
-		elif(v > mean - stdev):
+		elif(v > mean):
 			grade[k] = 7
-		elif(v > mean - 2*stdev):
+		elif(v > mean - stdev):
 			grade[k] = 6
-		elif(v > mean - 3*stdev):
+		elif(v > mean - 2*stdev):
 			grade[k] = 5
-		else:
+		elif(v > mean - 3*stdev):
 			grade[k] = 4
+		else:
+			grade[k] = 3
 	grade = dict(sorted(grade.items(), key = lambda kv:abs(float(kv[1]))))
 	score = dict(sorted(score.items(), key = lambda kv:abs(float(kv[1]))))
 	print(f"G->{grade}\n\nS->{score}")
@@ -232,9 +233,9 @@ def get_feature_score(dataDirPath):
 	count = [0,0,0]
 	rawdata = fileR.readlines()
 	pos = 0
-	for kernal in kernel_types:
+	for kernel in kernel_types:
 		feature_score = dict()
-		if 'linear' == kernal:
+		if 'linear' == kernel:
 				fileW.write(f"\n\n\n\nSVM Type: Linear; Reg. Param: {reg_params[0]}\n")
 				weights = rawdata[pos].split()
 				pos += 1
@@ -246,7 +247,7 @@ def get_feature_score(dataDirPath):
 					CG_L[k] += v
 				count[0] += 1
 
-		if 'poly' == kernal:
+		if 'poly' == kernel:
 			for degree in degrees:
 				for coef0 in coef0s:
 					fileW.write(f"\n\n\n\nSVM Type: POLY; Reg. Param: {reg_params[2]}; degree: {degree}; coef0: {coef0}\n")
@@ -259,7 +260,7 @@ def get_feature_score(dataDirPath):
 					for k,v in feature_grade.items():
 						CG_P[k] += v
 					count[1] += 1
-		if 'rbf' == kernal:
+		if 'rbf' == kernel:
 			for gamma in gammas:
 				fileW.write(f"\n\n\n\nSVM Type: RBF; Reg. Param: {reg_params[1]}; gamma:{gamma}\n")
 				weights = rawdata[pos].split()
@@ -307,8 +308,8 @@ if __name__ == '__main__':
 	if(data_folder == "health"):
 		health.health_adversarial_region.execute()
 	
-	for kernal in kernel_types:
-		loop_model(kernal)
+	for kernel in kernel_types:
+		loop_model(kernel)
 
 	#dest = shutil.move("../saver/result1.txt", f"./{data_folder}/{data_folder}-results.txt") #shutil.move(source, destination) 
 	#dest = shutil.move("../saver/result_raw.txt", f"./{data_folder}/{data_folder}-results_raw.txt")
@@ -316,7 +317,7 @@ if __name__ == '__main__':
 
 	if('top' in perturbations):
 		get_feature_score(f"./{data_folder}")
-	get_avg_complete(f"./{data_folder}/{data_folder}-results_raw.txt")
+	#get_avg(f"./{data_folder}/{data_folder}-results_raw.txt")
 
 
 

@@ -16,7 +16,7 @@ def execute():
 	dataset = pd.read_csv('./adult/dataset/test-set.csv', header=None, skiprows=1)
 
 	print ("\t- Tiers [ADULT]")
-	tiers = Perturbation.readTiers(columns)
+	tiers = Perturbation.readTiers(columns, ['sex_male'])
 	Perturbation.saveTiers(tiers,'./adult/perturbation/adult-tier.dat')
 
 	print("\t- Testing [ADULT][Top]")

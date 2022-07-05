@@ -2,115 +2,7 @@
 
 	--------- Begin New Result --------
 Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_linear_g1_d1_c0_C1.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : interval
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-cat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| LINEAR	| 0.000000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 70.813800; Acc: 79.000000; Robust: 94.500000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.067665	|     158	|     189	|       150	|  70.813800	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_linear_g1_d1_c0_C1.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : interval
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| LINEAR	| 0.000000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 70.813800; Acc: 79.000000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.045085	|     158	|       0	|         0	|  70.813800	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_linear_g1_d1_c0_C1.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : interval
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noise-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| LINEAR	| 0.000000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 70.813800; Acc: 79.000000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.022820	|     158	|       0	|         0	|  70.813800	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_linear_g1_d1_c0_C1.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : raf
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-cat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| LINEAR	| 0.000000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 70.813800; Acc: 79.000000; Robust: 94.500000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.016055	|     158	|     189	|       150	|  70.813800	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_linear_g1_d1_c0_C1.dat
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.08_d1_c0_C1.dat
 2) Data Path : ../Data/german/dataset/test-set.csv
 3) Abstraction : raf
 4) Perturbation : from_file
@@ -124,236 +16,20 @@ Arguments:
 | SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
 ------------------------------------------------------------------------------------------------------------
 
-| SVM PARAM	||    OVO	| LINEAR	| 0.000000	|      0	| 0.000000	|       56|
+| SVM PARAM	||    OVO	|    RBF	| 0.080000	|      0	| 0.000000	|       56|
 ------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 70.813800; Acc: 79.000000; Robust: 0.000000 
+WITH OH epsilon: 0.05; Bal. Acc.: 66.083664; Acc: 76.500000; Robust: 0.000000 CE: 100.000000 
 
 ------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
 ------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.014960	|     158	|       0	|         0	|  70.813800	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_linear_g1_d1_c0_C1.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : raf
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noise-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| LINEAR	| 0.000000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 70.813800; Acc: 79.000000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.015090	|     158	|       0	|         0	|  70.813800	|
+| [SUMMARY]	|    200	|       0	|  1.864905	|     153	|       0	|         0	|  66.083664	|       0	| 
 ------------------------------------------------------------------------------------------------------------
 
 
 	--------- Begin New Result --------
 Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_linear_g1_d1_c0_C1.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : hybrid
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-cat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| LINEAR	| 0.000000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 70.813800; Acc: 79.000000; Robust: 94.500000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.022955	|     158	|     189	|       150	|  70.813800	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_linear_g1_d1_c0_C1.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : hybrid
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| LINEAR	| 0.000000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 70.813800; Acc: 79.000000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.021860	|     158	|       0	|         0	|  70.813800	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_linear_g1_d1_c0_C1.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : hybrid
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noise-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| LINEAR	| 0.000000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 70.813800; Acc: 79.000000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.022000	|     158	|       0	|         0	|  70.813800	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.05_d1_c0_C10.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : interval
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-cat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	|    RBF	| 0.050000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 74.125496; Acc: 79.500000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.255285	|     159	|       0	|         0	|  74.125496	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.05_d1_c0_C10.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : interval
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	|    RBF	| 0.050000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 74.125496; Acc: 79.500000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.136180	|     159	|       0	|         0	|  74.125496	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.05_d1_c0_C10.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : interval
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noise-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	|    RBF	| 0.050000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 74.125496; Acc: 79.500000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.135110	|     159	|       0	|         0	|  74.125496	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.05_d1_c0_C10.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : raf
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-cat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	|    RBF	| 0.050000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 74.125496; Acc: 79.500000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.636665	|     159	|       0	|         0	|  74.125496	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.05_d1_c0_C10.dat
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.1_d1_c0_C1.dat
 2) Data Path : ../Data/german/dataset/test-set.csv
 3) Abstraction : raf
 4) Perturbation : from_file
@@ -367,236 +43,20 @@ Arguments:
 | SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
 ------------------------------------------------------------------------------------------------------------
 
-| SVM PARAM	||    OVO	|    RBF	| 0.050000	|      0	| 0.000000	|       56|
+| SVM PARAM	||    OVO	|    RBF	| 0.100000	|      0	| 0.000000	|       56|
 ------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 74.125496; Acc: 79.500000; Robust: 0.000000 
+WITH OH epsilon: 0.05; Bal. Acc.: 65.729054; Acc: 76.000000; Robust: 0.000000 CE: 100.000000 
 
 ------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
 ------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.637945	|     159	|       0	|         0	|  74.125496	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.05_d1_c0_C10.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : raf
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noise-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	|    RBF	| 0.050000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 74.125496; Acc: 79.500000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.636850	|     159	|       0	|         0	|  74.125496	|
+| [SUMMARY]	|    200	|       0	|  1.886635	|     152	|       0	|         0	|  65.729054	|       0	| 
 ------------------------------------------------------------------------------------------------------------
 
 
 	--------- Begin New Result --------
 Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.05_d1_c0_C10.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : hybrid
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-cat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	|    RBF	| 0.050000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 74.125496; Acc: 79.500000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.791155	|     159	|       0	|         0	|  74.125496	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.05_d1_c0_C10.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : hybrid
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	|    RBF	| 0.050000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 74.125496; Acc: 79.500000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.749045	|     159	|       0	|         0	|  74.125496	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.05_d1_c0_C10.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : hybrid
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noise-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	|    RBF	| 0.050000	|      0	| 0.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 74.125496; Acc: 79.500000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.746100	|     159	|       0	|         0	|  74.125496	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_poly_g1_d6_c6_C0.01.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : interval
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-cat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| POLYNOMIAL	| 0.000000	|      6	| 6.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 71.781464; Acc: 75.500000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.090270	|     151	|       0	|         0	|  71.781464	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_poly_g1_d6_c6_C0.01.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : interval
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| POLYNOMIAL	| 0.000000	|      6	| 6.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 71.781464; Acc: 75.500000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.091005	|     151	|       0	|         0	|  71.781464	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_poly_g1_d6_c6_C0.01.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : interval
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noise-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| POLYNOMIAL	| 0.000000	|      6	| 6.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 71.781464; Acc: 75.500000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.089210	|     151	|       0	|         0	|  71.781464	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_poly_g1_d6_c6_C0.01.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : raf
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-cat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| POLYNOMIAL	| 0.000000	|      6	| 6.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 71.781464; Acc: 75.500000; Robust: 76.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.630790	|     151	|     152	|       116	|  71.781464	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_poly_g1_d6_c6_C0.01.dat
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.2_d1_c0_C1.dat
 2) Data Path : ../Data/german/dataset/test-set.csv
 3) Abstraction : raf
 4) Perturbation : from_file
@@ -610,76 +70,22 @@ Arguments:
 | SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
 ------------------------------------------------------------------------------------------------------------
 
-| SVM PARAM	||    OVO	| POLYNOMIAL	| 0.000000	|      6	| 6.000000	|       56|
+| SVM PARAM	||    OVO	|    RBF	| 0.200000	|      0	| 0.000000	|       56|
 ------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 71.781464; Acc: 75.500000; Robust: 0.000000 
+WITH OH epsilon: 0.05; Bal. Acc.: 65.452578; Acc: 77.000000; Robust: 0.000000 CE: 100.000000 
 
 ------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
 ------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.858205	|     151	|       0	|         0	|  71.781464	|
+| [SUMMARY]	|    200	|       0	|  2.080575	|     154	|       0	|         0	|  65.452578	|       0	| 
 ------------------------------------------------------------------------------------------------------------
 
 
 	--------- Begin New Result --------
 Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_poly_g1_d6_c6_C0.01.dat
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.4_d1_c0_C1.dat
 2) Data Path : ../Data/german/dataset/test-set.csv
 3) Abstraction : raf
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noise-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| POLYNOMIAL	| 0.000000	|      6	| 6.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 71.781464; Acc: 75.500000; Robust: 0.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.830175	|     151	|       0	|         0	|  71.781464	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_poly_g1_d6_c6_C0.01.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : hybrid
-4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-cat-adversarial-region.dat
-6) Tier Path : ../Data/german/perturbation/german-tier.dat
-7) Is binary : 1
-
-
-
-------------------------------------------------------------------------------------------------------------
-| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
-------------------------------------------------------------------------------------------------------------
-
-| SVM PARAM	||    OVO	| POLYNOMIAL	| 0.000000	|      6	| 6.000000	|       56|
-------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 71.781464; Acc: 75.500000; Robust: 76.000000 
-
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
-------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.686445	|     151	|     152	|       116	|  71.781464	|
-------------------------------------------------------------------------------------------------------------
-
-
-	--------- Begin New Result --------
-Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_poly_g1_d6_c6_C0.01.dat
-2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : hybrid
 4) Perturbation : from_file
 5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
 6) Tier Path : ../Data/german/perturbation/german-tier.dat
@@ -691,24 +97,24 @@ Arguments:
 | SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
 ------------------------------------------------------------------------------------------------------------
 
-| SVM PARAM	||    OVO	| POLYNOMIAL	| 0.000000	|      6	| 6.000000	|       56|
+| SVM PARAM	||    OVO	|    RBF	| 0.400000	|      0	| 0.000000	|       56|
 ------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 71.781464; Acc: 75.500000; Robust: 0.000000 
+WITH OH epsilon: 0.05; Bal. Acc.: 59.814882; Acc: 76.000000; Robust: 0.000000 CE: 100.000000 
 
 ------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
 ------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.909225	|     151	|       0	|         0	|  71.781464	|
+| [SUMMARY]	|    200	|       0	|  2.535280	|     152	|       0	|         0	|  59.814882	|       0	| 
 ------------------------------------------------------------------------------------------------------------
 
 
 	--------- Begin New Result --------
 Arguments:
-1) SVM Path : ../Data/./german/svm/german-svm_poly_g1_d6_c6_C0.01.dat
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.6_d1_c0_C1.dat
 2) Data Path : ../Data/german/dataset/test-set.csv
-3) Abstraction : hybrid
+3) Abstraction : raf
 4) Perturbation : from_file
-5) Perturbation Value/Path : ../Data/german/perturbation/german-noise-adversarial-region.dat
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
 6) Tier Path : ../Data/german/perturbation/german-tier.dat
 7) Is binary : 1
 
@@ -718,12 +124,552 @@ Arguments:
 | SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
 ------------------------------------------------------------------------------------------------------------
 
-| SVM PARAM	||    OVO	| POLYNOMIAL	| 0.000000	|      6	| 6.000000	|       56|
+| SVM PARAM	||    OVO	|    RBF	| 0.600000	|      0	| 0.000000	|       56|
 ------------------------------------------------------------------------------------------------------------
-WITHOUT OH epsilon: 0.05; Bal. Acc.: 71.781464; Acc: 75.500000; Robust: 0.000000 
+WITH OH epsilon: 0.05; Bal. Acc.: 50.847458; Acc: 71.000000; Robust: 0.000000 CE: 100.000000 
 
 ------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
 ------------------------------------------------------------------------------------------------------------
-| [SUMMARY]	|    200	|       0	|  0.889990	|     151	|       0	|         0	|  71.781464	|
+| [SUMMARY]	|    200	|       0	|  2.642030	|     142	|       0	|         0	|  50.847458	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.08_d1_c0_C3.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.080000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 72.292343; Acc: 79.000000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  1.775775	|     158	|       0	|         0	|  72.292343	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.1_d1_c0_C3.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.100000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 72.785191; Acc: 79.000000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  1.874660	|     158	|       0	|         0	|  72.785191	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.2_d1_c0_C3.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.200000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 73.278038; Acc: 79.000000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  2.095765	|     158	|       0	|         0	|  73.278038	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.4_d1_c0_C3.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.400000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 65.452578; Acc: 77.000000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  2.511325	|     154	|       0	|         0	|  65.452578	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.6_d1_c0_C3.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.600000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 54.868374; Acc: 72.500000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  2.688205	|     145	|       0	|         0	|  54.868374	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.08_d1_c0_C5.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.080000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 74.125496; Acc: 79.500000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  1.781755	|     159	|       0	|         0	|  74.125496	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.1_d1_c0_C5.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.100000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 72.214208; Acc: 77.500000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  1.848025	|     155	|       0	|         0	|  72.214208	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.2_d1_c0_C5.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.200000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 70.579397; Acc: 74.500000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  2.120530	|     149	|       0	|         0	|  70.579397	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.4_d1_c0_C5.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.400000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 65.097969; Acc: 76.500000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  2.489410	|     153	|       0	|         0	|  65.097969	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.6_d1_c0_C5.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.600000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 55.715831; Acc: 73.000000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  2.666550	|     146	|       0	|         0	|  55.715831	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.08_d1_c0_C7.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.080000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 71.721361; Acc: 77.500000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  1.751230	|     155	|       0	|         0	|  71.721361	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.1_d1_c0_C7.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.100000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 72.214208; Acc: 77.500000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  1.824090	|     155	|       0	|         0	|  72.214208	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.2_d1_c0_C7.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.200000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 70.934006; Acc: 75.000000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  2.144005	|     150	|       0	|         0	|  70.934006	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.4_d1_c0_C7.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.400000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 64.743359; Acc: 76.000000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  2.452735	|     152	|       0	|         0	|  64.743359	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.6_d1_c0_C7.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.600000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 55.715831; Acc: 73.000000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  2.654980	|     146	|       0	|         0	|  55.715831	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.08_d1_c0_C9.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.080000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 71.366751; Acc: 77.000000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  1.837690	|     154	|       0	|         0	|  71.366751	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.1_d1_c0_C9.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.100000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 71.150379; Acc: 76.000000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  1.821535	|     152	|       0	|         0	|  71.150379	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.2_d1_c0_C9.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.200000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 70.086549; Acc: 74.500000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  2.124675	|     149	|       0	|         0	|  70.086549	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.4_d1_c0_C9.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.400000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 64.743359; Acc: 76.000000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  2.535705	|     152	|       0	|         0	|  64.743359	|       0	| 
+------------------------------------------------------------------------------------------------------------
+
+
+	--------- Begin New Result --------
+Arguments:
+1) SVM Path : ../Data/./german/svm/german-svm_rbf_g0.6_d1_c0_C9.dat
+2) Data Path : ../Data/german/dataset/test-set.csv
+3) Abstraction : raf
+4) Perturbation : from_file
+5) Perturbation Value/Path : ../Data/german/perturbation/german-noisecat-adversarial-region.dat
+6) Tier Path : ../Data/german/perturbation/german-tier.dat
+7) Is binary : 1
+
+
+
+------------------------------------------------------------------------------------------------------------
+| SVM PARAM	||  CType	|  KType	|  Gamma	| Degree	| Coeff.	| SpaceSize|
+------------------------------------------------------------------------------------------------------------
+
+| SVM PARAM	||    OVO	|    RBF	| 0.600000	|      0	| 0.000000	|       56|
+------------------------------------------------------------------------------------------------------------
+WITH OH epsilon: 0.05; Bal. Acc.: 55.715831; Acc: 73.000000; Robust: 0.000000 CE: 100.000000 
+
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	||   Size	| Epsilon	| Avg. Time (ms)	| Correct	| Robust	| Cond. robust	| Bal. Acc.	|Counterexamples	|
+------------------------------------------------------------------------------------------------------------
+| [SUMMARY]	|    200	|       0	|  2.649865	|     146	|       0	|         0	|  55.715831	|       0	| 
 ------------------------------------------------------------------------------------------------------------

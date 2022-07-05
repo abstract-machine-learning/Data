@@ -11,8 +11,9 @@ def readColumns(path):
         columns = [line for line in csv.reader(f)][0][1:]
     return columns
 
-def readTiers(columns):
+def readTiers(columns, cat_attributes):
     tier = []
+    isOH = []
     lookup = {}
     next_index = 1
     for c in columns:
@@ -20,18 +21,25 @@ def readTiers(columns):
         if len(data) == 1:
             tier.append(next_index)
             next_index = next_index + 1
+            if(data[0] in cat_attributes):
+                isOH.append(1)
+            else:
+                isOH.append(0)
         else:
             prefix, value = data
+            isOH.append(1)
             if prefix in lookup:
                 tier.append(lookup[prefix])
             else:
                 lookup[prefix] = next_index
                 tier.append(next_index)
                 next_index = next_index + 1
+    tier = tier + isOH
     return tier
 
-def readTiers_Health(columns):
+def readTiers_Health(columns, cat_attributes):
     tier = []
+    isOH = []
     lookup = {}
     next_index = 1
     for c in columns:
@@ -39,14 +47,20 @@ def readTiers_Health(columns):
         if len(data) == 1 or data[0] in ["PrimaryConditionGroup","Specialty","ProcedureGroup","PlaceSvc"]:
             tier.append(next_index)
             next_index = next_index + 1
+            if(columns in cat_attributes):
+                isOH.append(1)
+            else:
+                isOH.append(0)
         else:
             prefix, value = data
+            isOH.append(1)
             if prefix in lookup:
                 tier.append(lookup[prefix])
             else:
                 lookup[prefix] = next_index
                 tier.append(next_index)
                 next_index = next_index + 1
+    tier = tier + isOH
     return tier
 
 def category(dataset, columns, attributes):
