@@ -12,14 +12,15 @@ import matplotlib.pyplot as plt
 
 
 
-featRank = {'people_liable_for': 6.0, 'telephone_A192': 6.0, 'sex_male': 6.0, 'residence_since': 7.4, 'status=A11': 7.4, 'credit_history=A30': 7.4, 'purpose=A40': 7.4, 'savings=A61': 7.4, 'employment=A71': 7.4, 'other_debtors=A101': 7.4, 'property=A121': 7.4, 'installment_plans=A141': 7.4, 'housing=A151': 7.4, 'skill_level=A171': 7.4, 'foreign_worker_A202': 7.6, 'investment_as_income_percentage': 8.0, 'number_of_credits': 8.6, 'credit_amount': 8.8, 'age': 8.8, 'months': 10.0}  
+featRankPoly = {'people_liable_for': 6.0, 'telephone_A192': 6.0, 'sex_male': 6.0, 'residence_since': 7.4, 'status=A11': 7.4, 'credit_history=A30': 7.4, 'purpose=A40': 7.4, 'savings=A61': 7.4, 'employment=A71': 7.4, 'other_debtors=A101': 7.4, 'property=A121': 7.4, 'installment_plans=A141': 7.4, 'housing=A151': 7.4, 'skill_level=A171': 7.4, 'foreign_worker_A202': 7.6, 'investment_as_income_percentage': 8.0, 'number_of_credits': 8.6, 'credit_amount': 8.8, 'age': 8.8, 'months': 10.0}  
+featRank = {'status=A11': 6.0, 'credit_history=A30': 6.0, 'purpose=A40': 6.0, 'savings=A61': 6.0, 'employment=A71': 6.0, 'other_debtors=A101': 6.0, 'property=A121': 6.0, 'installment_plans=A141': 6.0, 'housing=A151': 6.0, 'skill_level=A171': 6.0, 'people_liable_for': 6.6, 'sex_male': 6.6, 'residence_since': 6.8, 'telephone_A192': 7.2, 'number_of_credits': 7.8, 'investment_as_income_percentage': 8.6, 'foreign_worker_A202': 9.0, 'age': 9.2, 'months': 10.0, 'credit_amount': 10.0}
 featColor = {'residence_since': 'b', 'people_liable_for': 'g', 'telephone_A192': 'y', 'sex_male': 'c', 'investment_as_income_percentage': 'm', 'number_of_credits': 'r', 'foreign_worker_A202': 'orange', 'months': 'cyan', 'age': 'pink', 'credit_amount': 'peru',}
 #line_color = ['b','g','y','c','m','r','orange','cyan','pink','peru','lawngreen'];
 
-kernel_name = 'poly'
-reg_param = 0.01
-gamma = 0.01
-degree = 6
+kernel_name = 'rbf'
+reg_param = 10
+gamma = 0.04
+degree = 6 
 coef0 = 3
 
 data_folder = "german"	
@@ -86,17 +87,19 @@ def alloutcomeCurve(model):
 		
 		pos11,pos12 = (x[-1],y[-1])
 		pos21,pos22 = (x[0],y[0])
-		if(legend in ["foreign_worker_A202","people_liable_for"]):
-			pos11,pos12 = (x[-1],y[-1]+0.015)
+		if(legend in ["age","residence_since","sex_male"]):
+			pos21,pos22 = (x[0],y[0]-0.02)
 		if(legend in ["telephone_A192"]):
-			pos11,pos12 = (x[-1],y[-1]-0.015)
-		plt.text(pos11,pos12, f'{featRank[legend]}',fontsize = 30.0)
-		#plt.text(pos21,pos22, f'{featRank[legend]}',fontsize = 30.0)
+			pos21,pos22 = (x[0],y[0]+0.02)
+		if(legend in ["investment_as_income_percentage"]):
+			pos21,pos22 = (x[0],y[0]+0.005)
+		#plt.text(pos11,pos12, f'{featRank[legend]}',fontsize = 30.0)
+		plt.text(pos21,pos22, f'{featRank[legend]}',fontsize = 30.0)
 		i += 1
 	legend = []
 	#for key in allOutcomes.keys():
 		#legend.append(f"{key} [{featRank[key]}]")
-	#plt.legend(legend, loc ="upper left")
+	#plt.legend(legend, loc ="upper right")
 	plt.xlabel('Perturbation of feature Input')
 	plt.ylabel('Absolute change in outcome')
 	plt.title(f'{data_folder}-{kernel_name}')

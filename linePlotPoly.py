@@ -90,7 +90,7 @@ def alloutcomeCurve(model):
 			pos11,pos12 = (x[-1],y[-1]+0.015)
 		if(legend in ["telephone_A192"]):
 			pos11,pos12 = (x[-1],y[-1]-0.015)
-		plt.text(pos11,pos12, f'{featRank[legend]}',fontsize = 30.0)
+		plt.text(pos11-0.1,pos12, f'{featRank[legend]}',fontsize = 30.0)
 		#plt.text(pos21,pos22, f'{featRank[legend]}',fontsize = 30.0)
 		i += 1
 	legend = []

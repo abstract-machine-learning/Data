@@ -13,20 +13,20 @@ import compas.compas_adversarial_region
 import german.german_adversarial_region
 import health.health_adversarial_region
 
-data_folder = "adult"	
+data_folder = "compas"	
 training_name = "dataset/training-set.csv"
 test_name = "dataset/test-set.csv"
 adversarial_name = "adversarial-region.dat"
 
 svm_loc = "./domains/{data_folder}/model/"
 
-reg_params = [1,0.05,0.01] #for linear raf and poly respectively
-gammas = [0.01]
+reg_params = [1,0.05,0.01]
+gammas = [0.01,0.03,0.05,0.07,0.09]
 degrees = [3]
-coef0s =  [3]
+coef0s =  list(range(0,16,3))[1:]
 abstractions = ['raf']#['interval','raf']
-perturbations = ["cat", "noisecat","noise"]#["top","cat", "noisecat","noise"]
-kernel_types = ['rbf','poly']
+perturbations = ["top"]#["top","cat", "noisecat","noise"]
+kernel_types = ['linear','rbf','poly']
 exceptions = []
 
 def test_SVM(model):
@@ -313,7 +313,7 @@ if __name__ == '__main__':
 
 	#dest = shutil.move("../saver/result1.txt", f"./{data_folder}/{data_folder}-results.txt") #shutil.move(source, destination) 
 	#dest = shutil.move("../saver/result_raw.txt", f"./{data_folder}/{data_folder}-results_raw.txt")
-	#dest = shutil.move("../saver/feature_score_raw.txt", f"./{data_folder}/{data_folder}-feature_score_raw.txt")
+	dest = shutil.move("../saver/feature_score_raw.txt", f"./{data_folder}/{data_folder}-feature_score_raw.txt")
 
 	if('top' in perturbations):
 		get_feature_score(f"./{data_folder}")
