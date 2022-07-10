@@ -298,7 +298,16 @@ def get_feature_score(dataDirPath,kernel_types,data_folder,reg_params,gammas,deg
 	fileW.write(f"\n\n\n----CUMMULATIVE RESULT---\n")
 	fileW.write(f"{ dict(sorted(CG.items(), key = lambda kv:abs(float(kv[1]))))} \n")
 
+def createDir(data_folder):
+	if(not os.path.isdir(f"./{data_folder}/dataset")):
+		os.system(f"mkdir ./{data_folder}/dataset")
+	if(not os.path.isdir(f"./{data_folder}/perturbation")):
+		os.system(f"mkdir ./{data_folder}/perturbation")
+	if(not os.path.isdir(f"./{data_folder}/svm")):
+		os.system(f"mkdir ./{data_folder}/svm")		
+
 def caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool= False,is_OH = 1,get_CE = 0,if_part = 0):
+	createDir(data_folder)
 	os.system('rm ../saver/result1.txt')
 	os.system('rm ../saver/feature_score_raw.txt')
 	os.system('rm ../saver/result_raw.txt')
