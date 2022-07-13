@@ -8,8 +8,8 @@ choice = int(input("Enter choice: "))
 if(choice == 1):
 	reg_params = [1]
 	gammas = []
-	degrees = [3,6,9,12]
-	coef0s =  [3,6,9,12,15]
+	degrees = [3,6]#[3,6,9,12]
+	coef0s =  [3,6]#[3,6,9,12,15]
 	abstractions = ['raf']
 	perturbations = ["noisecat"]
 	kernel_types = ['poly']

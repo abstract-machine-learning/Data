@@ -15,19 +15,19 @@ def execute(kernel_name,reg_params):
 
 	if(choice == 1):
 		abstractions = ['interval']
-		exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 2,get_avg_bool = True, is_OH = 0, get_CE = 0, if_part = 0)
+		exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 2,get_avg_bool = True, is_OH = 0, get_CE = 0, if_part = 0,plot = 'boxplotCrime')
 	
 	elif(choice == 2):
 		abstractions = ['interval']
-		exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 2,get_avg_bool = True, is_OH = 1, get_CE = 0, if_part = 0)
+		exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 2,get_avg_bool = True, is_OH = 1, get_CE = 0, if_part = 0,plot = 'boxplotCrime')
 	
 	elif(choice == 3):
 		abstractions = ['raf']
-		exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 2,get_avg_bool = True,is_OH = 0, get_CE = 0, if_part = 0)
+		exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 2,get_avg_bool = True,is_OH = 0, get_CE = 0, if_part = 0,plot = 'boxplotCrime')
 	
 	elif(choice == 4):
 		abstractions = ['raf']
-		exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 2,get_avg_bool = True,is_OH = 1, get_CE = 0, if_part = 0)
+		exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 2,get_avg_bool = True,is_OH = 1, get_CE = 0, if_part = 0,plot = 'boxplotCrime')
 	
 	elif(choice == 5):
 		print("\nThank you\n")

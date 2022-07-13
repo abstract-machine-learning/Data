@@ -17,7 +17,7 @@ def execute():
 		abstractions = ['raf']
 		perturbations = ["cat","noisecat","noise"]
 		kernel_types = ['linear']
-		exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool = False, is_OH = 1, get_CE = 0, if_part = 0)
+		exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool = False, is_OH = 1, get_CE = 0, if_part = 0,if_print_raw=True)
 	elif(choice == 6):
 		print("\nThank you\n")
 		return data_folder,True
@@ -32,4 +32,5 @@ while(True):
  		break
 	print(f"\n\n\n OUTPUT LOCATION: \n" +
 		f"1) Observe the Acc. Bal. Acc. and Robustness LB values from the output\n" +
-		f"2) Also saved at ./{data_folder}/{data_folder}-results.txt\n")
+		f"2) Read the table and the paths above it for options\n"
+		f"3) Also saved at ./{data_folder}/{data_folder}-results.txt\n")

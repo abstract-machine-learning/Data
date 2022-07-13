@@ -14,7 +14,7 @@ if(choice == 1):
 	abstractions = ['raf']
 	perturbations = ["noisecat"]
 	kernel_types = ['linear','rbf','poly']
-	exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool = False)
+	exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool = False, is_OH = 1, get_CE = 0, if_part = 0,if_print_raw=True, plot = 'boxplotDatasets')
 
 if(choice == 2):
 	data_folder = "compas"
@@ -25,7 +25,7 @@ if(choice == 2):
 	abstractions = ['raf']
 	perturbations = ["noisecat"]
 	kernel_types = ['linear','rbf','poly']
-	exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool = False)
+	exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool = False, is_OH = 1, get_CE = 0, if_part = 0,if_print_raw=True, plot = 'boxplotDatasets')
 
 if(choice == 3):
 	data_folder = "crime"
@@ -36,7 +36,7 @@ if(choice == 3):
 	abstractions = ['raf']
 	perturbations = ["noisecat"]
 	kernel_types = ['linear','rbf','poly']
-	exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool = False)
+	exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool = False, is_OH = 1, get_CE = 0, if_part = 0,if_print_raw=True, plot = 'boxplotDatasets')
 
 if(choice == 4):
 	data_folder = "german"
@@ -47,7 +47,7 @@ if(choice == 4):
 	abstractions = ['raf']
 	perturbations = ["noisecat"]
 	kernel_types = ['linear','rbf','poly']
-	exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool = False)
+	exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool = False, is_OH = 1, get_CE = 0, if_part = 0,if_print_raw=True, plot = 'boxplotDatasets')
 
 if(choice == 5):
 	data_folder = "health"
@@ -58,7 +58,7 @@ if(choice == 5):
 	abstractions = ['raf']
 	perturbations = ["noisecat"]
 	kernel_types = ['linear','rbf','poly']
-	exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool = False)
+	exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool = False, is_OH = 1, get_CE = 0, if_part = 0,if_print_raw=True, plot = 'boxplotDatasets')
 
 
 print(f"\n\n\n OUTPUT LOCATION: \n" +
