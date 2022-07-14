@@ -5,6 +5,8 @@ import pandas as pd
 import Dataset
 import Perturbation
 import json
+import time
+
 
 def execute(perturbType, features):
 	if(features != []):
@@ -12,6 +14,7 @@ def execute(perturbType, features):
 		return
 	columns = Perturbation.readColumns('./german/dataset/columns.csv')
 	dataset = pd.read_csv('./german/dataset/test-set.csv', header=None, skiprows=1)
+	
 
 	print ("\t- Tiers [GERMAN]")
 	tiers = Perturbation.readTiers(columns,['sex_male'])
@@ -21,6 +24,7 @@ def execute(perturbType, features):
 	perturbation = Perturbation.top(columns)
 	Perturbation.savePerturbation(perturbation, './german/perturbation/german-top-adversarial-region.dat')
 	
+
 	print("\t- Testing [GERMAN][CAT]")
 	perturbation = Perturbation.category(dataset, columns, ['sex_male'])
 	Perturbation.savePerturbation(perturbation, './german/perturbation/german-cat-adversarial-region.dat')

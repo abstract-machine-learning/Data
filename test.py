@@ -39,7 +39,7 @@ print(f"imp_vals-> {imp_vals}")
 
 std = np.std(imp_all, axis=1)
 indices = np.argsort(imp_vals)[::-1]
-print(f"imp_vals-> {indices}")
+print(f"indices-> {indices}")
 
 
 plt.figure()

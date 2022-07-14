@@ -87,9 +87,9 @@ def create_model(kernel_name,reg_param = 1,gamma = 1,degree = 1, coef0 = 0,data_
 		classifier_mapper1 = classifier_mapper.ClassifierMapper()
 		classifier_mapper1.create(model, output_path)
 		test_SVM(model,data_folder)
-		start = time.process_time()
+		start = time.time()
 		mlxtrendPrint(model,data_folder,PerturbFeature)
-		end = time.process_time()
+		end = time.time()
 		print(f"Time mlx: {end-start}")
 		
 	else:
@@ -165,7 +165,12 @@ def loop_model(kernel_name,reg_params,gammas,degrees,coef0s,abstractions,perturb
 def loop_saver(svm_addr,abstractions,perturbations,data_folder,is_OH, get_CE, if_part):
 	for abstraction in abstractions:
 		for perturbation in perturbations:
+			start = time.time()
+
 			run_saver(svm_addr,abstraction,perturbation,data_folder,is_OH, get_CE, if_part)
+			end = time.time()
+			print(f"Time Saver: {end-start}")
+			
 
 def get_avg(rawPath,kernel_types,reg_params,gammas,degrees,coef0s,abstractions,perturbations):
 	kernel = kernel_types[0]
@@ -338,7 +343,7 @@ def get_feature_score(dataDirPath,kernel_types,data_folder,reg_params,gammas,deg
 				for col_i in range(1,len(columns)):
 					feature_score[columns[col_i]] = abs(float(weights[col_i]))
 				feature_grade,feature_score = score_to_grade(feature_score)
-				fileW.write(f"{feature_score} \n")
+				fileW.write(f"{feature_grade} \n")
 				for k,v in feature_grade.items():
 					CG_L[k] += v
 				count[0] += 1
@@ -352,7 +357,7 @@ def get_feature_score(dataDirPath,kernel_types,data_folder,reg_params,gammas,deg
 					for col_i in range(1,len(columns)):
 						feature_score[columns[col_i]] = abs(float(weights[col_i]))
 					feature_grade,feature_score = score_to_grade(feature_score)
-					fileW.write(f"{feature_score} \n")
+					fileW.write(f"{feature_grade} \n")
 					for k,v in feature_grade.items():
 						CG_P[k] += v
 					count[1] += 1
@@ -364,7 +369,7 @@ def get_feature_score(dataDirPath,kernel_types,data_folder,reg_params,gammas,deg
 				for col_i in range(1,len(columns)):
 					feature_score[columns[col_i]] = abs(float(weights[col_i]))
 				feature_grade,feature_score = score_to_grade(feature_score)
-				fileW.write(f"{feature_score} \n")
+				fileW.write(f"{feature_grade} \n")
 				for k,v in feature_grade.items():
 					CG_R[k] += v
 				count[2] += 1
@@ -421,7 +426,7 @@ def caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbatio
 		german.german_adversarial_region.execute(perturbations, PerturbFeature)
 	if(data_folder == "health"):
 		health.health_adversarial_region.execute()
-	
+		
 	for kernel in kernel_types:
 		if(regType == 1):
 			loop_model(kernel,reg_params,gammas,degrees,coef0s,abstractions,perturbations,data_folder,is_OH, get_CE, if_part,PerturbFeature)

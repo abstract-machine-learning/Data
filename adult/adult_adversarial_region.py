@@ -9,6 +9,8 @@ import pandas as pd
 import Dataset
 import Perturbation
 import json
+import time
+
 
 def execute(perturbType, features):
 	if(features != []):
@@ -17,6 +19,7 @@ def execute(perturbType, features):
 	columns = Perturbation.readColumns('./adult/dataset/columns.csv')
 	dataset = pd.read_csv('./adult/dataset/test-set.csv', header=None, skiprows=1)
 
+		
 	print ("\t- Tiers [ADULT]")
 	tiers = Perturbation.readTiers(columns, ['sex_male'])
 	Perturbation.saveTiers(tiers,'./adult/perturbation/adult-tier.dat')
@@ -24,7 +27,7 @@ def execute(perturbType, features):
 	print("\t- Testing [ADULT][Top]")
 	perturbation = Perturbation.top(columns)
 	Perturbation.savePerturbation(perturbation, './adult/perturbation/adult-top-adversarial-region.dat')
-	
+
 	print("\t- Testing [ADULT][CAT]")
 	perturbation = Perturbation.category(dataset, columns, ['sex_male'])
 	perturbation_path = base_dir + '/perturbation/adult-cat-adversarial-region.dat'
@@ -52,17 +55,17 @@ def executeCustom(perturbType, features):
 	tiers = Perturbation.readTiers(columns, ['sex_male'])
 	Perturbation.saveTiers(tiers,'./adult/perturbation/adult-tier.dat')
 
+	if("cat" in perturbType):
+		print("\t- Testing [ADULT][CAT]")
+		perturbation = Perturbation.category(dataset, columns, features)
+		perturbation_path = base_dir + '/perturbation/adult-cat-adversarial-region.dat'
+		Perturbation.savePerturbation(perturbation, perturbation_path)
 	
-	print("\t- Testing [ADULT][CAT]")
-	perturbation = Perturbation.category(dataset, columns, features)
-	perturbation_path = base_dir + '/perturbation/adult-cat-adversarial-region.dat'
-	Perturbation.savePerturbation(perturbation, perturbation_path)
-	
-	
-	print("\t- Testing [ADULT][NOISE]")
-	perturbation = Perturbation.noise(dataset, columns, features, 0.3)
-	perturbation_path = base_dir + '/perturbation/adult-noise-adversarial-region.dat'
-	Perturbation.savePerturbation(perturbation, perturbation_path)
+	elif("noise" in perturbType):
+		print("\t- Testing [ADULT][NOISE]")
+		perturbation = Perturbation.noise(dataset, columns, features, 0.3)
+		perturbation_path = base_dir + '/perturbation/adult-noise-adversarial-region.dat'
+		Perturbation.savePerturbation(perturbation, perturbation_path)
 	
 	
 if __name__ == '__main__':

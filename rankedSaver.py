@@ -74,8 +74,8 @@ if(choice == 2):
 	perturbations = ['noise'] if ( choice1 == 1) else ['cat'] 
 	
 	ScoreLinear = {'fnlwgt': 0.024315, 'age': 0.07576, 'capital_loss': 0.082618, 'hours_per_week': 0.104416, 'sex_male': 0.212629, 'race=amer_indian_eskimo': 0.236754, 'education_num': 0.240729, 'workclass=federal_gov': 0.407883, 'marital_status=divorced': 0.635387, 'relationship=husband': 0.655684, 'education=10th': 0.801337, 'capital_gain': 0.905834, 'occupation=adm_clerical': 0.911317, 'native_country=cambodia': 1.040589} 
-	ScorePoly = {'capital_loss': 0.059535, 'sex_male': 0.325648, 'hours_per_week': 0.368317, 'age': 0.425033, 'workclass=federal_gov': 0.444059, 'education=10th': 0.444059, 'marital_status=divorced': 0.444059, 'occupation=adm_clerical': 0.444059, 'relationship=husband': 0.444059, 'race=amer_indian_eskimo': 0.444059, 'native_country=cambodia': 0.444059, 'education_num': 0.485843, 'fnlwgt': 1.402729, 'capital_gain': 1.474939} 
 	ScoreRBF = {'workclass=federal_gov': 0.005304, 'education=10th': 0.005304, 'marital_status=divorced': 0.005304, 'occupation=adm_clerical': 0.005304, 'relationship=husband': 0.005304, 'race=amer_indian_eskimo': 0.005304, 'native_country=cambodia': 0.005304, 'capital_loss': 0.022981, 'fnlwgt': 0.02504, 'hours_per_week': 0.082677, 'age': 0.083364, 'sex_male': 0.083925, 'education_num': 0.206012, 'capital_gain': 0.515228} 
+	ScorePoly = {'capital_loss': 0.059535, 'sex_male': 0.325648, 'hours_per_week': 0.368317, 'age': 0.425033, 'workclass=federal_gov': 0.444059, 'education=10th': 0.444059, 'marital_status=divorced': 0.444059, 'occupation=adm_clerical': 0.444059, 'relationship=husband': 0.444059, 'race=amer_indian_eskimo': 0.444059, 'native_country=cambodia': 0.444059, 'education_num': 0.485843, 'fnlwgt': 1.402729, 'capital_gain': 1.474939} 
 
 	
 	if choice2 == 1:
@@ -139,3 +139,5 @@ if(choice == 3):
 			print(f"\n\n\t\t{feat}: {Score[feat]}\n\n")
 			feat = feat.split('=', 2)[0] 
 			exec.caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1, is_OH = 1, get_CE = get_CE, get_avg_bool = False,PerturbFeature=[feat])
+
+
