@@ -3,6 +3,8 @@ import exec
 datasets = ["adult","compas","crime","german","health"]
 kernels =   ['linear','rbf','poly']
 perturbations = ["top [for Ranking]","cat", "noisecat","noise"]
+abstractions1 = ['interval']
+abstractions2 = ['raf']
 
 for i in range(len(datasets)):
 	print(f"{i}) {datasets[i]}")
@@ -11,38 +13,41 @@ dataset_id = int(input("Pick a dataset ID from above choices: "))
 for i in range(len(kernels)):
 	print(f"{i}) {kernels[i]}")
 kernel_id = int(input("Pick a Kernel ID from above choices: "))
+kernel_types = [kernels[kernel_id]]
 
-for i in range(len(perturbations)):
-	print(f"{i}) {perturbations[i]}")
-perturbation_id = int(input("Pick a Perturbation ID from above choices: "))
+perturbations = ['cat','noisecat','noise']
 
 reg = float(input("Input Regularization Parameter: "))
+gammas,degrees,coef0s = [], [], [];
+reg_params = [reg]
 
 if(kernels[kernel_id] == "linear"):
-	svm_addr = create_model("linear",reg)
-	loop_saver(svm_addr)
+	pass
 
 if(kernels[kernel_id] == "rbf"):
-	gamma = float(input("Enter Gamma: "))
-	svm_addr = create_model("rbf",reg, gamma = gamma)
-	loop_saver(svm_addr)
+	gammas = [float(input("Enter Gamma: "))]
+
 
 if(kernels[kernel_id] == "poly"):
-	degree = float(input("Enter Degree: "))
-	coef0 = float(input("Enter Coefficent: "))
-	try:
-		svm_addr = create_model("poly",reg, degree = degree, coef0 = coef0)
-		loop_saver(svm_addr)
-	except:
-		print(f"\t-----Exception Occured for (degree= {degree},coeff = {coef0})--------")
+	degrees = [float(input("Enter Degree: "))]
+	coef0s = [float(input("Enter Coefficent: "))]
+
+# Without OH
+exec.caller(datasets[dataset_id],reg_params,gammas,degrees,coef0s,abstractions1,perturbations,kernel_types,regType = 2,get_avg_bool= False,is_OH = 0,get_CE = 0,if_part = 0,if_print_raw= False,plot = 'None',PerturbFeature = [], epsilon = 0.05, ifmlx = False)
+
+# With OH
+exec.caller(datasets[dataset_id],reg_params,gammas,degrees,coef0s,abstractions1,perturbations,kernel_types,regType = 2,get_avg_bool= False,is_OH = 1,get_CE = 0,if_part = 0,if_print_raw= False,plot = 'None',PerturbFeature = [], epsilon = 0.05, ifmlx = False)
+
+# Without OH
+exec.caller(datasets[dataset_id],reg_params,gammas,degrees,coef0s,abstractions2,perturbations,kernel_types,regType = 2,get_avg_bool= False,is_OH = 0,get_CE = 0,if_part = 0,if_print_raw= False,plot = 'None',PerturbFeature = [], epsilon = 0.05, ifmlx = False)
+
+# With OH
+exec.caller(datasets[dataset_id],reg_params,gammas,degrees,coef0s,abstractions2,perturbations,kernel_types,regType = 2,get_avg_bool= False,is_OH = 1,get_CE = 0,if_part = 0,if_print_raw= False,plot = 'None',PerturbFeature = [], epsilon = 0.05, ifmlx = False)
 
 
-
-
-
-comment1 = "Obtain 3D plot Poly; Run saver on RAF OH noisecat perturbations; with degree= [3,6,9,12] and coeff0 = [3,6,9,12,15] with reg param = 1"
-
-comment2 = "Obtain 3D plot RBF;  Run saver on RAF OH noisecat perturbations; with reg. parm = [0.4,0.6,0.8,1.2,1.4] and coeff0 = [0.0001,0.0006,0.0011,0.0016,0.0021]"
-
-
-comment4 = "Obtain box plot all dataset: For each dataset consider the set of input present at bottom of exec.py and find the box plot of resulting vlaues."
+print(f"\n\n\n OUTPUT LOCATION: \n" +
+	f"1) Observe the Robustness LB values from the output. \n" +
+	f" They are in the same order as in the table \n" +
+	f"2) Acc. and B. Acc. are same for all as its the same SVM \n" +
+	
+	f"4) Also saved at ./{data_folder}/{data_folder}-results.txt \n")

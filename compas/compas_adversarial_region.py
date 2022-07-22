@@ -10,9 +10,9 @@ import Dataset
 import Perturbation
 import json
 
-def execute(perturbType, features):
+def execute(perturbType, features, epsilon):
 	if(features != []):
-		executeCustom(perturbType,features)
+		executeCustom(perturbType,features, epsilon)
 		return
 	columns = Perturbation.readColumns('./compas/dataset/columns.csv')
 	dataset = pd.read_csv('./compas/dataset/test-set.csv', header=None, skiprows=1)
@@ -21,29 +21,33 @@ def execute(perturbType, features):
 	tiers = Perturbation.readTiers(columns, ['race_caucasian'])
 	Perturbation.saveTiers(tiers,'./compas/perturbation/compas-tier.dat')
 
-	print("\t- Testing [COMPAS][Top]")
-	perturbation = Perturbation.top(columns)
-	Perturbation.savePerturbation(perturbation, './compas/perturbation/compas-top-adversarial-region.dat')
+	if("top" in perturbType):
+		print("\t- Testing [COMPAS][Top]")
+		perturbation = Perturbation.top(columns)
+		Perturbation.savePerturbation(perturbation, './compas/perturbation/compas-top-adversarial-region.dat')
 	
-	print("\t- Testing [COMPAS][CAT]")
-	perturbation = Perturbation.category(dataset, columns, ['race_caucasian'])
-	perturbation_path = base_dir + '/perturbation/compas-cat-adversarial-region.dat'
-	Perturbation.savePerturbation(perturbation, perturbation_path)
+	if("cat" in perturbType):
+		print("\t- Testing [COMPAS][CAT]")
+		perturbation = Perturbation.category(dataset, columns, ['race_caucasian'])
+		perturbation_path = base_dir + '/perturbation/compas-cat-adversarial-region.dat'
+		Perturbation.savePerturbation(perturbation, perturbation_path)
 	
-	print("\t- Testing [COMPAS][NOISE")
-	noise_on = ['age', 'diff_custody', 'diff_jail', 'priors_count', 'juv_fel_count', 'v_score_text', 'sex_male', 'c_charge_degree_m']
-	perturbation = Perturbation.noise(dataset, columns, noise_on, 0.05)
-	perturbation_path = base_dir + '/perturbation/compas-noise-adversarial-region.dat'
-	Perturbation.savePerturbation(perturbation, perturbation_path)
+	if("noise" in perturbType):
+		print("\t- Testing [COMPAS][NOISE]")
+		noise_on = ['age', 'diff_custody', 'diff_jail', 'priors_count', 'juv_fel_count', 'v_score_text', 'sex_male', 'c_charge_degree_m']
+		perturbation = Perturbation.noise(dataset, columns, noise_on, 0.05)
+		perturbation_path = base_dir + '/perturbation/compas-noise-adversarial-region.dat'
+		Perturbation.savePerturbation(perturbation, perturbation_path)
 	
-	print("\t- Testing [COMPAS][NOISE-CAT]")
-	noise_on = ['age', 'diff_custody', 'diff_jail', 'priors_count', 'juv_fel_count', 'v_score_text', 'sex_male', 'c_charge_degree_m']
-	perturbation = Perturbation.noiseCat(dataset, columns, noise_on, 0.05, ['race_caucasian'])
-	perturbation_path = base_dir + '/perturbation/compas-noisecat-adversarial-region.dat'
-	Perturbation.savePerturbation(perturbation, perturbation_path)
+	if("noisecat" in perturbType):
+		print("\t- Testing [COMPAS][NOISE-CAT]")
+		noise_on = ['age', 'diff_custody', 'diff_jail', 'priors_count', 'juv_fel_count', 'v_score_text', 'sex_male', 'c_charge_degree_m']
+		perturbation = Perturbation.noiseCat(dataset, columns, noise_on, 0.05, ['race_caucasian'])
+		perturbation_path = base_dir + '/perturbation/compas-noisecat-adversarial-region.dat'
+		Perturbation.savePerturbation(perturbation, perturbation_path)
 
 
-def executeCustom(perturbType, features):
+def executeCustom(perturbType, features,epsilon = 0.3):
 
 	columns = Perturbation.readColumns('./compas/dataset/columns.csv')
 	dataset = pd.read_csv('./compas/dataset/test-set.csv', header=None, skiprows=1)
@@ -60,7 +64,7 @@ def executeCustom(perturbType, features):
 	
 	elif("noise" in perturbType):
 		print("\t- Testing [COMPAS][NOISE]")
-		perturbation = Perturbation.noise(dataset, columns, features, 0.3)
+		perturbation = Perturbation.noise(dataset, columns, features, epsilon)
 		perturbation_path = base_dir + '/perturbation/compas-noise-adversarial-region.dat'
 		Perturbation.savePerturbation(perturbation, perturbation_path)
 	

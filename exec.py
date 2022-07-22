@@ -56,9 +56,9 @@ def mlxtrendPrint(svm,data_folder,features):
 	for col_id in range(1,len(columns)):
 		mlxScore[columns[col_id]] = imp_vals[col_id-1]
 	mlxGrade,mlxScore = score_to_grade(mlxScore, canBeZero = True)
-	print(f"{mlxScore}")
+	print(f"MLX Score: {mlxScore}")
 	if(features == []):
-		print(f"{ dict(sorted(mlxGrade.items(), key = lambda kv:abs(float(kv[1]))))} \n")
+		print(f"MLX Grade: { dict(sorted(mlxGrade.items(), key = lambda kv:abs(float(kv[1]))))} \n")
 	else:
 		for k,v in mlxScore.items():
 			if k in features:
@@ -67,15 +67,15 @@ def mlxtrendPrint(svm,data_folder,features):
 
 	
 
-def create_model(kernel_name,reg_param = 1,gamma = 1,degree = 1, coef0 = 0,data_folder = "",PerturbFeature = []):	
+def create_model(kernel_name,reg_param = 1,gamma = 1,degree = 1, coef0 = 0,data_folder = "",PerturbFeature = [], ifmlx = False):	
 	
 	#s = subprocess.check_call(f"python3 {data_folder}-get.py", shell = True)
 
 	dataset_path = f"./{data_folder}/{training_name}"
 	output_path = f"./{data_folder}/svm/{data_folder}-svm_{kernel_name}_g{gamma}_d{degree}_c{coef0}_C{reg_param}.dat"
 
-	#if(os.path.isfile(output_path)==False):
-	if(True):
+	if ((os.path.isfile(output_path)==False) or (ifmlx)):
+	#if(True):
 		print(f"Creating SVM: {output_path}")
 		# Trains model
 		dataset_mapper1 = dataset_mapper.DatasetMapper()
@@ -87,10 +87,11 @@ def create_model(kernel_name,reg_param = 1,gamma = 1,degree = 1, coef0 = 0,data_
 		classifier_mapper1 = classifier_mapper.ClassifierMapper()
 		classifier_mapper1.create(model, output_path)
 		test_SVM(model,data_folder)
-		start = time.time()
-		mlxtrendPrint(model,data_folder,PerturbFeature)
-		end = time.time()
-		print(f"Time mlx: {end-start}")
+		if(ifmlx):
+			start = time.time()
+			mlxtrendPrint(model,data_folder,PerturbFeature)
+			end = time.time()
+			print(f"Time mlx: {end-start}")
 		
 	else:
 		print(f"SVM Already present: {output_path}")
@@ -118,45 +119,45 @@ def run_saver(svm_addr,abstraction,perturbation,data_folder,is_OH, get_CE, if_pa
 	print(f"Finished Analysis")
 
 # Loop over reg parameters
-def loop_model2(kernel_name,reg_params,gammas,degrees,coef0s,abstractions,perturbations,data_folder,is_OH, get_CE, if_part):
+def loop_model2(kernel_name,reg_params,gammas,degrees,coef0s,abstractions,perturbations,data_folder,is_OH, get_CE, if_part, ifmlx):
 	for reg in reg_params:
 		if kernel_name == 'linear':
-			svm_addr = create_model(kernel_name,reg,data_folder = data_folder)
+			svm_addr = create_model(kernel_name,reg,data_folder = data_folder, ifmlx = ifmlx)
 			loop_saver(svm_addr,abstractions,perturbations,data_folder,is_OH, get_CE, if_part)
 		
 		if kernel_name == 'rbf':
 			for gamma in gammas:
-				svm_addr = create_model(kernel_name,reg, gamma = gamma,data_folder = data_folder)
+				svm_addr = create_model(kernel_name,reg, gamma = gamma,data_folder = data_folder, ifmlx = ifmlx)
 				loop_saver(svm_addr,abstractions,perturbations,data_folder,is_OH, get_CE, if_part)
 		
 		if kernel_name == 'poly':
 			for degree in degrees:
 				for coef0 in coef0s:
 					try:
-						svm_addr = create_model(kernel_name,reg, degree = degree, coef0 = coef0,data_folder = data_folder)
+						svm_addr = create_model(kernel_name,reg, degree = degree, coef0 = coef0,data_folder = data_folder, ifmlx = ifmlx)
 						loop_saver(svm_addr,abstractions,perturbations,data_folder,is_OH, get_CE, if_part)
 					except:
 						print(f"\t-----Exception Occured for (degree= {degree},coeff = {coef0})--------")
 						exceptions.append((degree,coef0))
 
 # Each reg parameter is for a variable.
-def loop_model(kernel_name,reg_params,gammas,degrees,coef0s,abstractions,perturbations,data_folder,is_OH, get_CE, if_part,PerturbFeature):
+def loop_model(kernel_name,reg_params,gammas,degrees,coef0s,abstractions,perturbations,data_folder,is_OH, get_CE, if_part,PerturbFeature, ifmlx):
 	#for reg in reg_params:
 		#for kernel_name in kernel_names:
 	if kernel_name == 'linear':
-		svm_addr = create_model(kernel_name,reg_params[0],data_folder = data_folder,PerturbFeature = PerturbFeature)
+		svm_addr = create_model(kernel_name,reg_params[0],data_folder = data_folder,PerturbFeature = PerturbFeature, ifmlx = ifmlx)
 		loop_saver(svm_addr,abstractions,perturbations,data_folder,is_OH, get_CE, if_part)
 	
 	if kernel_name == 'rbf':
 		for gamma in gammas:
-			svm_addr = create_model(kernel_name,reg_params[1], gamma = gamma,data_folder = data_folder, PerturbFeature = PerturbFeature)
+			svm_addr = create_model(kernel_name,reg_params[1], gamma = gamma,data_folder = data_folder, PerturbFeature = PerturbFeature, ifmlx = ifmlx)
 			loop_saver(svm_addr,abstractions,perturbations,data_folder,is_OH, get_CE, if_part)
 	
 	if kernel_name == 'poly':
 		for degree in degrees:
 			for coef0 in coef0s:
 				try:
-					svm_addr = create_model(kernel_name,reg_params[2], degree = degree, coef0 = coef0,data_folder = data_folder, PerturbFeature= PerturbFeature)
+					svm_addr = create_model(kernel_name,reg_params[2], degree = degree, coef0 = coef0,data_folder = data_folder, PerturbFeature= PerturbFeature, ifmlx = ifmlx)
 					loop_saver(svm_addr,abstractions,perturbations,data_folder,is_OH, get_CE, if_part)
 				except:
 					print(f"\t-----Exception Occured for (degree= {degree},coeff = {coef0})--------")
@@ -166,7 +167,6 @@ def loop_saver(svm_addr,abstractions,perturbations,data_folder,is_OH, get_CE, if
 	for abstraction in abstractions:
 		for perturbation in perturbations:
 			start = time.time()
-
 			run_saver(svm_addr,abstraction,perturbation,data_folder,is_OH, get_CE, if_part)
 			end = time.time()
 			print(f"Time Saver: {end-start}")
@@ -343,7 +343,7 @@ def get_feature_score(dataDirPath,kernel_types,data_folder,reg_params,gammas,deg
 				for col_i in range(1,len(columns)):
 					feature_score[columns[col_i]] = abs(float(weights[col_i]))
 				feature_grade,feature_score = score_to_grade(feature_score)
-				fileW.write(f"{feature_grade} \n")
+				fileW.write(f"{feature_score} \n")
 				for k,v in feature_grade.items():
 					CG_L[k] += v
 				count[0] += 1
@@ -357,7 +357,7 @@ def get_feature_score(dataDirPath,kernel_types,data_folder,reg_params,gammas,deg
 					for col_i in range(1,len(columns)):
 						feature_score[columns[col_i]] = abs(float(weights[col_i]))
 					feature_grade,feature_score = score_to_grade(feature_score)
-					fileW.write(f"{feature_grade} \n")
+					fileW.write(f"{feature_score} \n")
 					for k,v in feature_grade.items():
 						CG_P[k] += v
 					count[1] += 1
@@ -369,7 +369,7 @@ def get_feature_score(dataDirPath,kernel_types,data_folder,reg_params,gammas,deg
 				for col_i in range(1,len(columns)):
 					feature_score[columns[col_i]] = abs(float(weights[col_i]))
 				feature_grade,feature_score = score_to_grade(feature_score)
-				fileW.write(f"{feature_grade} \n")
+				fileW.write(f"{feature_score} \n")
 				for k,v in feature_grade.items():
 					CG_R[k] += v
 				count[2] += 1
@@ -404,7 +404,7 @@ def createDir(data_folder):
 	if(not os.path.isdir(f"./{data_folder}/svm")):
 		os.system(f"mkdir ./{data_folder}/svm")		
 
-def caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool= False,is_OH = 1,get_CE = 0,if_part = 0,if_print_raw= False,plot = 'None',PerturbFeature = []):
+def caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,regType = 1,get_avg_bool= False,is_OH = 1,get_CE = 0,if_part = 0,if_print_raw= False,plot = 'None',PerturbFeature = [], epsilon = 0.3, ifmlx = False):
 	createDir(data_folder)
 	os.system('rm ../saver/result1.txt')
 	os.system('rm ../saver/feature_score_raw.txt')
@@ -417,21 +417,21 @@ def caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbatio
 	os.chdir("..")
 
 	if(data_folder == "adult"):
-		adult.adult_adversarial_region.execute(perturbations, PerturbFeature)
+		adult.adult_adversarial_region.execute(perturbations, PerturbFeature, epsilon)
 	if(data_folder == "compas"):
-		compas.compas_adversarial_region.execute(perturbations, PerturbFeature)
+		compas.compas_adversarial_region.execute(perturbations, PerturbFeature, epsilon)
 	if(data_folder == "crime"):
-		crime.crime_adversarial_region.execute(perturbations, PerturbFeature)
+		crime.crime_adversarial_region.execute(perturbations, PerturbFeature, epsilon)
 	if(data_folder == "german"):
-		german.german_adversarial_region.execute(perturbations, PerturbFeature)
+		german.german_adversarial_region.execute(perturbations, PerturbFeature, epsilon)
 	if(data_folder == "health"):
 		health.health_adversarial_region.execute()
 		
 	for kernel in kernel_types:
 		if(regType == 1):
-			loop_model(kernel,reg_params,gammas,degrees,coef0s,abstractions,perturbations,data_folder,is_OH, get_CE, if_part,PerturbFeature)
+			loop_model(kernel,reg_params,gammas,degrees,coef0s,abstractions,perturbations,data_folder,is_OH, get_CE, if_part,PerturbFeature,ifmlx)
 		if(regType == 2):
-			loop_model2(kernel,reg_params,gammas,degrees,coef0s,abstractions,perturbations,data_folder,is_OH, get_CE, if_part)
+			loop_model2(kernel,reg_params,gammas,degrees,coef0s,abstractions,perturbations,data_folder,is_OH, get_CE, if_part, ifmlx)
 
 	dest = shutil.move("../saver/result1.txt", f"./{data_folder}/{data_folder}-results.txt") #shutil.move(source, destination) 
 	dest = shutil.move("../saver/result_raw.txt", f"./{data_folder}/{data_folder}-results_raw.txt")
@@ -462,52 +462,3 @@ if __name__ == '__main__':
 	kernel_types = ['linear','rbf','poly']
 	caller(data_folder,reg_params,gammas,degrees,coef0s,abstractions,perturbations,kernel_types,is_OH=1)
 	
-
-#if __name__ == '__main__':
-#	loop_model('linear')
-#	loop_model('rbf')
-#	loop_model('poly')
-
-#if __name__ == '__main__':
-#	dest = shutil.move("../saver/result1.txt", f"./{data_folder}/{data_folder}-results.txt") #shutil.move(source, destination) 
-#	dest = shutil.move("../saver/result_raw.txt", f"./{data_folder}/{data_folder}-results_raw.txt")
-#
-#	get_avg(f"./{data_folder}/{data_folder}-results_raw.txt")
-
-#-----Crime------
-#reg_params = [1,1,1]
-#gammas = [0.01,0.001,0.0001,0.00001]
-#degrees = [3,9,15,20]
-#coef0s = [0]
-#abstractions = ['hybrid']
-
-
-#-----Health------
-#reg_params = [0.1]
-
-#-----adult------
-#reg_params = [1,0.05,0.01] #for linear raf and poly respectively
-#gammas = [0.01,0.03,0.05,0.07,0.09]
-#degrees = [3]
-#coef0s =  list(range(0,16,3))[1:]
-#abstractions = ['hybrid']
-#perturbations = ["cat", "noisecat","noise"]
-
-
-
-#-----compas------
-#reg_params = [1,0.05,0.01]
-#gammas = [0.01,0.03,0.05,0.07,0.09]
-#degrees = [3]
-#coef0s =  list(range(0,16,3))[1:]
-#abstractions = ['hybrid']
-#perturbations = ["cat", "noisecat","noise"]
-
-#-----German------
-#reg_params = [1,10,0.01]#[1,10,0.01]
-#gammas = [0.01,0.03,0.05,0.07,0.09]
-#degrees = [6]#list(range(0,16,3))[1:]
-#coef0s =  list(range(0,16,3))[1:]
-#abstractions = ['hybrid']#["interval", "raf","hybrid"]#["interval", "raf","hybrid"]
-#perturbations = ["cat", "noisecat","noise"]
-#-----------------

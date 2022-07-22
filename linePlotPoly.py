@@ -28,28 +28,6 @@ data_folder = "german"
 training_name = "dataset/training-set.csv"
 test_name = "dataset/test-set.csv"
 
-def barPlot():
-	F1 = []
-	F2 = []
-	X = []
-	for k,v in featRank1.items():
-		if "=" in k:
-			continue
-		F1.append(v)
-		F2.append(featRank2[k])
-		X.append(k)
-	
-	X_axis = np.arange(len(X))
-
-	plt.bar(X_axis - 0.2, F1, 0.4, label = 'Our')
-	plt.bar(X_axis + 0.2, F2, 0.4, label = 'Their')
-	  
-	plt.xticks(X_axis, X)
-	plt.xlabel("Feature")
-	plt.ylabel("Grade")
-	plt.legend()
-	plt.show()
-
 def test_SVM(model):
 	from sklearn import metrics
 	dataset_path = f"./{data_folder}/{test_name}"
@@ -58,7 +36,6 @@ def test_SVM(model):
 	y_pred = model.predict(x)
 	print("Accuracy:",metrics.accuracy_score(y, y_pred))
 	print("Balanced Accuracy:",metrics.balanced_accuracy_score(y, y_pred))
-
 
 def outcomeCurve(model,feat,input_mid):
 	Fid = Perturbation.readColumns(f'./{data_folder}/dataset/columns.csv').index(feat)
@@ -89,7 +66,7 @@ def alloutcomeCurve(model):
 				input_mid[cid] = 0.0
 		else:
 			input_mid[cid] = 0.5
-	input_mid = [0.25,0.113843955,0.33333334,0.0,0.25,0.0,0.0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,1,1,0,0,0,0,1,0]
+	#input_mid = [0.25,0.113843955,0.33333334,0.0,0.25,0.0,0.0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,1,1,0,0,0,0,1,0]
 	#input_mid = [0.29411766,0.1141741,0.33333334,0.6666667,0.23214285,0.0,0.0,0,0,1,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,0,0,0,1,0]
 	for feat in featRank1.keys():
 		if '=' in feat or feat == 'sex_male':
@@ -110,20 +87,26 @@ def alloutcomeCurve(model):
 		
 		pos11,pos12 = (x[-1],y[-1])
 		pos21,pos22 = (x[0],y[0])
-		if(legend in ["people_liable_for"]):
-			pos21,pos22 = (x[0]-0.040,y[0]-0.01)
-			pos11,pos12 = (x[-1],y[-1]-0.010)
-		if(legend in ["telephone_A192","number_of_credits"]):
-			pos21,pos22 = (x[0],y[0]-0.015)
-			pos11,pos12 = (x[-1]-0.025,y[-1]-0.025)
+
+		#Slightly perturbing the labels to make them more readable.
+		#while not changing order
+		if(legend in ["telephone_A192"]):
+			pos21,pos22 = (x[0],y[0] + 0.008)
+			pos11,pos12 = (x[-1],y[-1] + 0.008)
+		if(legend in ["residence_since"]):
+			pos21,pos22 = (x[0],y[0]-0.017)
+			pos11,pos12 = (x[-1],y[-1]-0.017)
+		if(legend in ["people_liable_for","foreign_worker_A202"]):
+			pos21,pos22 = (x[0],y[0]-0.025)
+			pos11,pos12 = (x[-1],y[-1]-0.025)
 		plt.text(pos11,pos12, f'{featRank1[legend]}',fontsize = 30.0)
 		plt.text(pos21,pos22, f'{featRank2[legend]}',fontsize = 30.0)
 		i += 1
-	plt.text(-0.37,0.35, f'MLX',fontsize = 30.0)
-	plt.text(0.27,0.35, f'OUR',fontsize = 30.0)
-	#legend = []
+	plt.text(-0.37,0.4, f'MLX',fontsize = 30.0)
+	plt.text(0.27,0.4, f'OUR',fontsize = 30.0)
+	legend = []
 	#for key in allOutcomes.keys():
-		#legend.append(f"{key} [{featRank1[key]}]")
+	#	legend.append(f"{key} [{featRank1[key]}]")
 	#plt.legend(legend, loc ="upper left")
 	plt.xlabel('Perturbation of feature Input')
 	plt.ylabel('Absolute change in outcome')
@@ -131,7 +114,6 @@ def alloutcomeCurve(model):
 	plt.show()
 	#plt.savefig('line_plot.png') 
 	
-
 def exec():
 	dataset_path = f"./{data_folder}/{training_name}"
 	print(f"Creating {kernel_name}-SVM")

@@ -13,16 +13,16 @@ import numpy as np
 
 
 # Their
-featRank2 = {'purpose=A42': 4, 'credit_history=A30': 5, 'purpose=A46': 5, 'purpose=A49': 5, 'savings=A63': 5, 'other_debtors=A101': 5, 'housing=A151': 5, 'skill_level=A172': 5, 'credit_amount': 6, 'number_of_credits': 6, 'foreign_worker_A202': 6, 'sex_male': 6, 'credit_history=A31': 6, 'purpose=A410': 6, 'purpose=A44': 6, 'purpose=A45': 6, 'purpose=A48': 6, 'savings=A62': 6, 'savings=A64': 6, 'employment=A71': 6, 'employment=A72': 6, 'other_debtors=A103': 6, 'property=A122': 6, 'property=A124': 6, 'installment_plans=A141': 6, 'installment_plans=A142': 6, 'housing=A152': 6, 'housing=A153': 6, 'skill_level=A171': 6, 'skill_level=A174': 6, 'age': 7, 'people_liable_for': 7, 'status=A12': 7, 'status=A13': 7, 'credit_history=A32': 7, 'credit_history=A33': 7, 'purpose=A41': 7, 'purpose=A43': 7, 'savings=A61': 7, 'savings=A65': 7, 'employment=A73': 7, 'employment=A75': 7, 'other_debtors=A102': 7, 'installment_plans=A143': 7, 'skill_level=A173': 7, 'months': 8, 'investment_as_income_percentage': 8, 'residence_since': 8, 'telephone_A192': 8, 'status=A11': 8, 'status=A14': 8, 'credit_history=A34': 8, 'employment=A74': 8, 'property=A121': 8, 'property=A123': 8, 'purpose=A40': 9} 
+featRank2 = {'credit_history=A31': 5, 'other_debtors=A101': 5, 'other_debtors=A102': 5, 'housing=A151': 5, 'housing=A152': 5, 'skill_level=A172': 5, 'people_liable_for': 6, 'foreign_worker_A202': 6, 'status=A12': 6, 'status=A13': 6, 'credit_history=A30': 6, 'credit_history=A34': 6, 'purpose=A410': 6, 'purpose=A42': 6, 'purpose=A44': 6, 'purpose=A45': 6, 'purpose=A46': 6, 'purpose=A48': 6, 'purpose=A49': 6, 'savings=A63': 6, 'savings=A64': 6, 'employment=A72': 6, 'employment=A75': 6, 'other_debtors=A103': 6, 'property=A122': 6, 'property=A123': 6, 'installment_plans=A141': 6, 'installment_plans=A142': 6, 'installment_plans=A143': 6, 'housing=A153': 6, 'skill_level=A171': 6, 'skill_level=A174': 6, 'residence_since': 7, 'age': 7, 'number_of_credits': 7, 'sex_male': 7, 'credit_history=A33': 7, 'purpose=A41': 7, 'purpose=A43': 7, 'savings=A61': 7, 'savings=A62': 7, 'savings=A65': 7, 'employment=A71': 7, 'employment=A73': 7, 'employment=A74': 7, 'property=A121': 7, 'property=A124': 7, 'credit_amount': 8, 'investment_as_income_percentage': 8, 'telephone_A192': 8, 'status=A14': 8, 'credit_history=A32': 8, 'purpose=A40': 8, 'skill_level=A173': 8, 'status=A11': 9, 'months': 10} 
 
 # Our
-featRank1 = {'sex_male': 6, 'status=A11': 6, 'credit_history=A30': 6, 'purpose=A40': 6, 'savings=A61': 6, 'employment=A71': 6, 'other_debtors=A101': 6, 'property=A121': 6, 'installment_plans=A141': 6, 'housing=A151': 6, 'skill_level=A171': 6, 'residence_since': 7, 'number_of_credits': 7, 'people_liable_for': 7, 'telephone_A192': 7, 'investment_as_income_percentage': 9, 'age': 9, 'months': 10, 'credit_amount': 10, 'foreign_worker_A202': 10} 
+featRank1 = {'people_liable_for': 6, 'status=A11': 6, 'credit_history=A30': 6, 'purpose=A40': 6, 'savings=A61': 6, 'employment=A71': 6, 'other_debtors=A101': 6, 'property=A121': 6, 'installment_plans=A141': 6, 'housing=A151': 6, 'skill_level=A171': 6, 'residence_since': 7, 'telephone_A192': 7, 'sex_male': 7, 'number_of_credits': 8, 'foreign_worker_A202': 8, 'investment_as_income_percentage': 9, 'months': 10, 'credit_amount': 10, 'age': 10} 
 
 featColor = {'residence_since': 'b', 'people_liable_for': 'g', 'telephone_A192': 'y', 'sex_male': 'c', 'investment_as_income_percentage': 'm', 'number_of_credits': 'r', 'foreign_worker_A202': 'orange', 'months': 'cyan', 'age': 'pink', 'credit_amount': 'peru',}
 
 kernel_name = 'rbf'
 reg_param = 10
-gamma = 0.05
+gamma = 0.01
 degree = 6
 coef0 = 3
 
@@ -71,7 +71,7 @@ def alloutcomeCurve(model):
 		else:
 			input_mid[cid] = 0.5
 	#input_mid = [0.25,0.113843955,0.33333334,0.0,0.25,0.0,0.0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,1,1,0,0,0,0,1,0]
-	input_mid = [0.029411765,0.05425333,0.33333334,1.0,0.5535714,0.0,0.0,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,1,0]
+	#input_mid = [0.029411765,0.05425333,0.33333334,1.0,0.5535714,0.0,0.0,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,1,0]
 	for feat in featRank1.keys():
 		if '=' in feat or feat == 'sex_male':
 			continue
@@ -91,19 +91,23 @@ def alloutcomeCurve(model):
 		
 		pos11,pos12 = (x[-1],y[-1])
 		pos21,pos22 = (x[0],y[0])
+
+		#Slightly perturbing the labels to make them more readable.
+		#while not changing order
 		if(legend in ["residence_since"]):
-			pos11,pos12 = (x[-1],y[-1]-0.02)
-		if(legend in ["investment_as_income_percentage"]):
-			pos21,pos22 = (x[0],y[0]-0.022)
-			pos11,pos12 = (x[-1],y[-1]-0.023)
+			pos11,pos12 = (x[-1],y[-1]-0.01)
+		if(legend in ["people_liable_for"]):
+			pos11,pos12 = (x[-1]-0.04,y[-1]-0.01)
+		if(legend in ["credit_amount"]):
+			pos21,pos22 = (x[0]+0.02,y[0]-0.02)
 		plt.text(pos11,pos12, f'{featRank1[legend]}',fontsize = 30.0)
 		plt.text(pos21,pos22, f'{featRank2[legend]}',fontsize = 30.0)
 		i += 1
-	plt.text(-0.37,0.45, f'MLX',fontsize = 30.0)
-	plt.text(0.27,0.45, f'OUR',fontsize = 30.0)
+	plt.text(-0.37,0.35, f'MLX',fontsize = 30.0)
+	plt.text(0.27,0.35, f'OUR',fontsize = 30.0)
 	#legend = []
 	#for key in allOutcomes.keys():
-		#legend.append(f"{key} [{featRank1[key]}]")
+	#	legend.append(f"{key} [{featRank1[key]}]")
 	#plt.legend(legend, loc ="upper left")
 	plt.xlabel('Perturbation of feature Input')
 	plt.ylabel('Absolute change in outcome')
