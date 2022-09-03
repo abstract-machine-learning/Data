@@ -41,31 +41,65 @@ def mlxtrendPrint(svm,data_folder,features):
 	dataset_path = f"./{data_folder}/{test_name}"
 	dataset_mapper1 = dataset_mapper.DatasetMapper()
 	x, y = dataset_mapper1.read(dataset_path)
-	with open(f"./{data_folder}/dataset/columns.csv", 'r') as f:
-		columns = [line for line in csv.reader(f)][0]
-	
-	imp_vals, imp_all = feature_importance_permutation(
-    	predict_method=svm.predict, 
-    	X=np.array(x),
-    	y=np.array(y),
-    	metric='accuracy',
-    	num_rounds=10,
-    	seed=1)
+
+	imp_vals = []
+	for i in range(5):
+		x, y = dataset_mapper1.shuffle(x,y)
+		with open(f"./{data_folder}/dataset/columns.csv", 'r') as f:
+			columns = [line for line in csv.reader(f)][0]
+		
+		imp_v, imp_all = feature_importance_permutation(
+    		predict_method=svm.predict, 
+    		X=np.array(x),
+    		y=np.array(y),
+    		metric='accuracy',
+    		num_rounds=10,
+    		seed=1)
+		if(imp_vals == []):
+			imp_vals = imp_v
+		else:
+			for j in range(len(imp_v)):
+				imp_vals[j] += imp_v[j]
+	for j in range(len(imp_vals)):
+		imp_vals[j] /= 5
 	
 	mlxScore = defaultdict(float)
 	for col_id in range(1,len(columns)):
 		mlxScore[columns[col_id]] = imp_vals[col_id-1]
 	mlxGrade,mlxScore = score_to_grade(mlxScore, canBeZero = True)
-	print(f"MLX Score: {mlxScore}")
+	
 	if(features == []):
+		print(f"MLX Score: {mlxScore}")
 		print(f"MLX Grade: { dict(sorted(mlxGrade.items(), key = lambda kv:abs(float(kv[1]))))} \n")
 	else:
 		for k,v in mlxScore.items():
 			if k in features:
 				print(f"mlxScore: {k} -> {v}")
 
+def skltrendPrint(svm,data_folder,features):
+	from sklearn.inspection import permutation_importance
+	dataset_path = f"./{data_folder}/{test_name}"
+	dataset_mapper1 = dataset_mapper.DatasetMapper()
+	x, y = dataset_mapper1.read(dataset_path)
+	with open(f"./{data_folder}/dataset/columns.csv", 'r') as f:
+			columns = [line for line in csv.reader(f)][0]
 
+	result = permutation_importance(svm, x, y, n_repeats = 10, random_state = 0)
+
+	Score = defaultdict(float)
 	
+	for col_id in range(1,len(columns)):
+		Score[columns[col_id]] = result.importances_mean[col_id-1]
+	Grade,Score = score_to_grade(Score, canBeZero = True)
+	
+	if(features == []):
+		print(f"SKL Score: {Score}")
+		print(f"SKL Grade: { dict(sorted(Grade.items(), key = lambda kv:abs(float(kv[1]))))} \n")
+	else:
+		for k,v in Score.items():
+			if k in features:
+				print(f"SKL Score: {k} -> {v}")
+
 
 def create_model(kernel_name,reg_param = 1,gamma = 1,degree = 1, coef0 = 0,data_folder = "",PerturbFeature = [], ifmlx = False):	
 	
@@ -89,7 +123,8 @@ def create_model(kernel_name,reg_param = 1,gamma = 1,degree = 1, coef0 = 0,data_
 		test_SVM(model,data_folder)
 		if(ifmlx):
 			start = time.time()
-			mlxtrendPrint(model,data_folder,PerturbFeature)
+			#mlxtrendPrint(model,data_folder,PerturbFeature)
+			skltrendPrint(model,data_folder,PerturbFeature)
 			end = time.time()
 			print(f"Time mlx: {end-start}")
 		
@@ -373,11 +408,14 @@ def get_feature_score(dataDirPath,kernel_types,data_folder,reg_params,gammas,deg
 				for k,v in feature_grade.items():
 					CG_R[k] += v
 				count[2] += 1
-	for col in CG_L.keys():
+	print(f"Before -> {CG_P} ;;;; {count[2]}")
+	for col in CG_R.keys():
 		CG_L[col] = CG_L[col]/count[0]
 		CG_R[col] = CG_R[col]/count[1]
 		CG_P[col] = CG_P[col]/count[2]
 		CG[col] = (CG_L[col] + CG_R[col] + CG_P[col])/3
+		print(f"After -> {CG_P} ;;;; {count[2]}")
+	print(f"After -> {CG_P} ;;;; {count[2]}")
 	fileW.write(f"\n\n\n----CUMMULATIVE RESULT (Linear)---\n")
 	fileW.write(f"{ dict(sorted(CG_L.items(), key = lambda kv:abs(float(kv[1]))))} \n")
 	fileW.write(f"\n\n\n----CUMMULATIVE RESULT (RBF)---\n")

@@ -1,4 +1,5 @@
 import csv
+import random
 
 class DatasetMapper:
     def read(self, file_path, offset = 0, rows = -1):
@@ -16,3 +17,11 @@ class DatasetMapper:
                     x.append(row[1:])
                 line_count += 1
         return x, y
+
+    def shuffle(self, x, y):
+        temp = list(zip(x, y))
+        random.shuffle(temp)
+        res1, res2 = zip(*temp)
+        res1, res2 = list(res1), list(res2)
+        return res1, res2
+
